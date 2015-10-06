@@ -48,6 +48,8 @@
             this.txtProcessesShutdown = new System.Windows.Forms.TextBox();
             this.txtProcessesRestart = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.grpFolders.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -237,11 +239,31 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "Processes to restart:";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(341, 276);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "Close";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(260, 276);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 348);
+            this.ClientSize = new System.Drawing.Size(428, 304);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpFolders);
@@ -285,6 +307,8 @@
         private System.Windows.Forms.TextBox txtProcessesRestart;
         private System.Windows.Forms.TextBox txtProcessesShutdown;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSave;
 
     }
 }
