@@ -83,6 +83,7 @@
             this.btnSetBackupFolder.Size = new System.Drawing.Size(24, 23);
             this.btnSetBackupFolder.TabIndex = 8;
             this.btnSetBackupFolder.UseVisualStyleBackColor = true;
+            this.btnSetBackupFolder.Click += new System.EventHandler(this.btnSetBackupFolder_Click);
             // 
             // txtBackupFolder
             // 
@@ -108,6 +109,7 @@
             this.btnSetAccountsFolder.Size = new System.Drawing.Size(24, 23);
             this.btnSetAccountsFolder.TabIndex = 5;
             this.btnSetAccountsFolder.UseVisualStyleBackColor = true;
+            this.btnSetAccountsFolder.Click += new System.EventHandler(this.btnSetAccountsFolder_Click);
             // 
             // txtAccountFolder
             // 
@@ -127,12 +129,13 @@
             // 
             // btnSetFLFolder
             // 
-            this.btnSetFLFolder.Image = global::FLServerMaintenanceTool.Properties.Resources.folder_icon;
+            this.btnSetFLFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnSetFLFolder.Image")));
             this.btnSetFLFolder.Location = new System.Drawing.Point(368, 11);
             this.btnSetFLFolder.Name = "btnSetFLFolder";
             this.btnSetFLFolder.Size = new System.Drawing.Size(24, 23);
             this.btnSetFLFolder.TabIndex = 2;
             this.btnSetFLFolder.UseVisualStyleBackColor = true;
+            this.btnSetFLFolder.Click += new System.EventHandler(this.btnSetFLFolder_Click);
             // 
             // txtFreelancerFolder
             // 
