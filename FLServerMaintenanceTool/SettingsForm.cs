@@ -48,5 +48,16 @@ namespace FLServerMaintenanceTool
             warnClose = false;
             this.Close();
         }
+
+        private void SettingsForm_Load(object sender, EventArgs e)
+        {
+            txtFreelancerFolder.Text = Properties.Settings.Default.FLFolder;
+            txtAccountFolder.Text = Properties.Settings.Default.AccountsFolder;
+            txtBackupFolder.Text = Properties.Settings.Default.BackupsFolder;
+            txtServerAddress.Text = Properties.Settings.Default.ServerAddress;
+            txtServerPassword.Text = Properties.Settings.Default.ServerPassword;
+            txtProcessesShutdown.Text = Properties.Settings.Default.CloseProcesses;
+            txtProcessesRestart.Text = Properties.Settings.Default.RestartProcesses;
+        }
     }
 }
