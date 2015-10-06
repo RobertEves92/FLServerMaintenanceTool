@@ -8,11 +8,14 @@ namespace FLServerMaintenanceTool
     class Backup
     {
         //Application Properties shortcuts
-        string BackupFolder { get { return Properties.Settings.Default.BackupsFolder; } }
-        string AccountsFolder { get { return Properties.Settings.Default.AccountsFolder; } }
+        string BackupFolder { get { return Properties.Settings.Default.BackupsFolder+"\\"; } }
+        string AccountsFolder { get { return Properties.Settings.Default.AccountsFolder + "\\"; } }
+        string ExeFolder { get { return Properties.Settings.Default.FLFolder + "\\"; } }
 
         string TimedBackupFolder { get { return BackupFolder + now.Year + "-" + now.Month + "-" + now.Day + " " + now.Hour + "-" + now.Minute + "-" + now.Second + "\\"; } }
         string AccountsBackupFolder { get { return TimedBackupFolder + "\\Accounts\\"; } }
+        string FLHookBackupFolder { get { return TimedBackupFolder + "\\flhook\\"; } }
+        string[] flHookFiles = { "flhook.dll", "flhook.ini", "zlib.dll" };
         DateTime now;
 
         public Backup()
@@ -28,6 +31,20 @@ namespace FLServerMaintenanceTool
 
             //Copy player accounts / server settings
             DirectoryCopy(AccountsFolder, AccountsBackupFolder, true);
+
+            //Copy FLHook files
+            Directory.CreateDirectory(FLHookBackupFolder);
+            foreach (string s in flHookFiles)
+            {
+                File.Copy(ExeFolder + s, FLHookBackupFolder + s);
+            }
+
+            //Copy FLHook Logs
+            DirectoryCopy(ExeFolder + "flhook_logs", TimedBackupFolder + "flhook_logs", true);
+            Directory.Delete(ExeFolder + "flhook_logs"); //Stops log build up, we only want logs since the last backup
+
+            //Copy FLHook Plugins
+            DirectoryCopy(ExeFolder + "flhook_plugins", TimedBackupFolder + "flhook_plugins", true);
         }
 
         private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
