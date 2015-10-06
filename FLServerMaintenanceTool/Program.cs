@@ -21,10 +21,10 @@ namespace FLServerMaintenanceTool
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //if (Common.AutoRun)
+            if (Common.AutoRun)
                 Application.Run(new MainForm());
-            //else
-            //    Application.Run(new SettingsForm());
+            else
+                Application.Run(new SettingsForm());
         }
     }
 }
