@@ -18,5 +18,11 @@ namespace FLServerMaintenanceTool
             //Get Current Date and Time
             now = DateTime.Now;
         }
+
+        public void RunBackup()
+        {
+            //Create Timed backup folder
+            Directory.CreateDirectory(TimedBackupFolder);
+        }
     }
 }
