@@ -6,7 +6,7 @@ namespace FLServerMaintenanceTool
 {
     public partial class MainForm : Form
     {
-        Thread MaintainanceThread;
+        Thread maintainanceThread;
         ProcessManager pm;
         int minsToGo = 60;
 
@@ -19,8 +19,8 @@ namespace FLServerMaintenanceTool
         {
             if (Common.AutoRun)
             {
-                MaintainanceThread = new Thread(AutoMaintainanceThread);
-                MaintainanceThread.Start();
+                maintainanceThread = new Thread(AutoMaintainanceThread);
+                maintainanceThread.Start();
             }
             else
             {
@@ -39,8 +39,8 @@ namespace FLServerMaintenanceTool
                 }
                 else
                 {
-                    MaintainanceThread.Abort();
-                    do { } while (MaintainanceThread.ThreadState == ThreadState.Running);
+                    maintainanceThread.Abort();
+                    do { } while (maintainanceThread.ThreadState == ThreadState.Running);
                 }
             }
             else
