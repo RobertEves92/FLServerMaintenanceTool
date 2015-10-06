@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 
 namespace FLServerMaintenanceTool
@@ -11,13 +9,13 @@ namespace FLServerMaintenanceTool
         string BackupFolder { get { return Properties.Settings.Default.BackupsFolder+"\\"; } }
         string AccountsFolder { get { return Properties.Settings.Default.AccountsFolder + "\\"; } }
         string FLFolder { get { return Properties.Settings.Default.FLFolder + "\\"; } }
-        string EXEFolder { get { return FLFolder + "EXE\\"; } }
+        string ExeFolder { get { return FLFolder + "EXE\\"; } }
 
         string TimedBackupFolder { get { return BackupFolder + now.Year + "-" + now.Month + "-" + now.Day + " " + now.Hour + "-" + now.Minute + "-" + now.Second + "\\"; } }
         string AccountsBackupFolder { get { return TimedBackupFolder + "\\Accounts\\"; } }
         string FLHookBackupFolder { get { return TimedBackupFolder + "\\flhook\\"; } }
-        string[] flHookFiles = { "flhook.dll", "flhook.ini", "zlib.dll" };
-        DateTime now;
+        readonly string[] flHookFiles = { "flhook.dll", "flhook.ini", "zlib.dll" };
+        readonly DateTime now;
 
         public Backup()
         {
@@ -37,15 +35,15 @@ namespace FLServerMaintenanceTool
             Directory.CreateDirectory(FLHookBackupFolder);
             foreach (string s in flHookFiles)
             {
-                File.Copy(EXEFolder + s, FLHookBackupFolder + s);
+                File.Copy(ExeFolder + s, FLHookBackupFolder + s);
             }
 
             //Copy FLHook Logs
-            DirectoryCopy(EXEFolder + "flhook_logs", TimedBackupFolder + "flhook_logs", true);
-            Directory.Delete(EXEFolder + "flhook_logs",true); //Stops log build up, we only want logs since the last backup
+            DirectoryCopy(ExeFolder + "flhook_logs", TimedBackupFolder + "flhook_logs", true);
+            Directory.Delete(ExeFolder + "flhook_logs",true); //Stops log build up, we only want logs since the last backup
 
             //Copy FLHook Plugins
-            DirectoryCopy(EXEFolder + "flhook_plugins", TimedBackupFolder + "flhook_plugins", true);
+            DirectoryCopy(ExeFolder + "flhook_plugins", TimedBackupFolder + "flhook_plugins", true);
         }
 
         private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)

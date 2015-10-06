@@ -86,7 +86,7 @@
             this.btnSetBackupFolder.Size = new System.Drawing.Size(24, 23);
             this.btnSetBackupFolder.TabIndex = 8;
             this.btnSetBackupFolder.UseVisualStyleBackColor = true;
-            this.btnSetBackupFolder.Click += new System.EventHandler(this.btnSetBackupFolder_Click);
+            this.btnSetBackupFolder.Click += new System.EventHandler(this.BtnSetBackupFolderClick);
             // 
             // txtBackupFolder
             // 
@@ -112,7 +112,7 @@
             this.btnSetAccountsFolder.Size = new System.Drawing.Size(24, 23);
             this.btnSetAccountsFolder.TabIndex = 5;
             this.btnSetAccountsFolder.UseVisualStyleBackColor = true;
-            this.btnSetAccountsFolder.Click += new System.EventHandler(this.btnSetAccountsFolder_Click);
+            this.btnSetAccountsFolder.Click += new System.EventHandler(this.BtnSetAccountsFolderClick);
             // 
             // txtAccountFolder
             // 
@@ -138,7 +138,7 @@
             this.btnSetFLFolder.Size = new System.Drawing.Size(24, 23);
             this.btnSetFLFolder.TabIndex = 2;
             this.btnSetFLFolder.UseVisualStyleBackColor = true;
-            this.btnSetFLFolder.Click += new System.EventHandler(this.btnSetFLFolder_Click);
+            this.btnSetFLFolder.Click += new System.EventHandler(this.BtnSetFLFolderClick);
             // 
             // txtFreelancerFolder
             // 
@@ -260,7 +260,7 @@
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Close";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // btnSave
             // 
@@ -270,7 +270,7 @@
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
             // label8
             // 

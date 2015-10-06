@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FLServerMaintenanceTool
@@ -16,7 +11,7 @@ namespace FLServerMaintenanceTool
             InitializeComponent();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -33,7 +28,7 @@ namespace FLServerMaintenanceTool
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSaveClick(object sender, EventArgs e)
         {
             //Save new settings
             Properties.Settings.Default.FLFolder = txtFreelancerFolder.Text;
@@ -62,19 +57,19 @@ namespace FLServerMaintenanceTool
             txtProcessesRestart.Text = Properties.Settings.Default.RestartProcesses;
         }
 
-        private void btnSetFLFolder_Click(object sender, EventArgs e)
+        private void BtnSetFLFolderClick(object sender, EventArgs e)
         {
             folderBrowserDialog.ShowDialog();
             txtFreelancerFolder.Text = folderBrowserDialog.SelectedPath;
         }
 
-        private void btnSetAccountsFolder_Click(object sender, EventArgs e)
+        private void BtnSetAccountsFolderClick(object sender, EventArgs e)
         {
             folderBrowserDialog.ShowDialog();
             txtAccountFolder.Text = folderBrowserDialog.SelectedPath;
         }
 
-        private void btnSetBackupFolder_Click(object sender, EventArgs e)
+        private void BtnSetBackupFolderClick(object sender, EventArgs e)
         {
             folderBrowserDialog.ShowDialog();
             txtBackupFolder.Text = folderBrowserDialog.SelectedPath;
