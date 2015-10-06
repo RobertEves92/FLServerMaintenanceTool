@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace FLServerMaintenanceTool
@@ -10,11 +9,21 @@ namespace FLServerMaintenanceTool
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
+            foreach (string s in args)
+            {
+                if (s == "/autorun")
+                    Common.AutoRun = true;
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            if (Common.AutoRun)
+                Application.Run(new MainForm());
+            else
+                Application.Run(new SettingsForm());
         }
     }
 }
