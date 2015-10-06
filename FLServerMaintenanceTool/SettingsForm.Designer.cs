@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             this.grpFolders = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtFreelancerFolder = new System.Windows.Forms.TextBox();
-            this.btnSetFLFolder = new System.Windows.Forms.Button();
-            this.btnSetAccountsFolder = new System.Windows.Forms.Button();
-            this.txtAccountFolder = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnSetBackupFolder = new System.Windows.Forms.Button();
             this.txtBackupFolder = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSetAccountsFolder = new System.Windows.Forms.Button();
+            this.txtAccountFolder = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSetFLFolder = new System.Windows.Forms.Button();
+            this.txtFreelancerFolder = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtServerAddress = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtServerPassword = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtServerAddress = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtProcessesShutdown = new System.Windows.Forms.TextBox();
-            this.txtProcessesRestart = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtProcessesRestart = new System.Windows.Forms.TextBox();
+            this.txtProcessesShutdown = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -74,29 +74,29 @@
             this.grpFolders.TabStop = false;
             this.grpFolders.Text = "Folders";
             // 
-            // label1
+            // btnSetBackupFolder
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Freelancer:";
+            this.btnSetBackupFolder.Location = new System.Drawing.Point(368, 63);
+            this.btnSetBackupFolder.Name = "btnSetBackupFolder";
+            this.btnSetBackupFolder.Size = new System.Drawing.Size(24, 23);
+            this.btnSetBackupFolder.TabIndex = 8;
+            this.btnSetBackupFolder.UseVisualStyleBackColor = true;
             // 
-            // txtFreelancerFolder
+            // txtBackupFolder
             // 
-            this.txtFreelancerFolder.Location = new System.Drawing.Point(72, 13);
-            this.txtFreelancerFolder.Name = "txtFreelancerFolder";
-            this.txtFreelancerFolder.Size = new System.Drawing.Size(290, 20);
-            this.txtFreelancerFolder.TabIndex = 1;
+            this.txtBackupFolder.Location = new System.Drawing.Point(72, 65);
+            this.txtBackupFolder.Name = "txtBackupFolder";
+            this.txtBackupFolder.Size = new System.Drawing.Size(290, 20);
+            this.txtBackupFolder.TabIndex = 7;
             // 
-            // btnSetFLFolder
+            // label3
             // 
-            this.btnSetFLFolder.Location = new System.Drawing.Point(368, 11);
-            this.btnSetFLFolder.Name = "btnSetFLFolder";
-            this.btnSetFLFolder.Size = new System.Drawing.Size(24, 23);
-            this.btnSetFLFolder.TabIndex = 2;
-            this.btnSetFLFolder.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Backup:";
             // 
             // btnSetAccountsFolder
             // 
@@ -122,29 +122,29 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Accounts:";
             // 
-            // btnSetBackupFolder
+            // btnSetFLFolder
             // 
-            this.btnSetBackupFolder.Location = new System.Drawing.Point(368, 63);
-            this.btnSetBackupFolder.Name = "btnSetBackupFolder";
-            this.btnSetBackupFolder.Size = new System.Drawing.Size(24, 23);
-            this.btnSetBackupFolder.TabIndex = 8;
-            this.btnSetBackupFolder.UseVisualStyleBackColor = true;
+            this.btnSetFLFolder.Location = new System.Drawing.Point(368, 11);
+            this.btnSetFLFolder.Name = "btnSetFLFolder";
+            this.btnSetFLFolder.Size = new System.Drawing.Size(24, 23);
+            this.btnSetFLFolder.TabIndex = 2;
+            this.btnSetFLFolder.UseVisualStyleBackColor = true;
             // 
-            // txtBackupFolder
+            // txtFreelancerFolder
             // 
-            this.txtBackupFolder.Location = new System.Drawing.Point(72, 65);
-            this.txtBackupFolder.Name = "txtBackupFolder";
-            this.txtBackupFolder.Size = new System.Drawing.Size(290, 20);
-            this.txtBackupFolder.TabIndex = 7;
+            this.txtFreelancerFolder.Location = new System.Drawing.Point(72, 13);
+            this.txtFreelancerFolder.Name = "txtFreelancerFolder";
+            this.txtFreelancerFolder.Size = new System.Drawing.Size(290, 20);
+            this.txtFreelancerFolder.TabIndex = 1;
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Backup:";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Freelancer:";
             // 
             // groupBox1
             // 
@@ -159,21 +159,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "FLHook";
             // 
-            // label4
+            // txtServerPassword
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Server Address:";
-            // 
-            // txtServerAddress
-            // 
-            this.txtServerAddress.Location = new System.Drawing.Point(94, 13);
-            this.txtServerAddress.Name = "txtServerAddress";
-            this.txtServerAddress.Size = new System.Drawing.Size(100, 20);
-            this.txtServerAddress.TabIndex = 1;
+            this.txtServerPassword.Location = new System.Drawing.Point(262, 13);
+            this.txtServerPassword.Name = "txtServerPassword";
+            this.txtServerPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtServerPassword.TabIndex = 3;
             // 
             // label5
             // 
@@ -184,12 +175,21 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Password:";
             // 
-            // txtServerPassword
+            // txtServerAddress
             // 
-            this.txtServerPassword.Location = new System.Drawing.Point(262, 13);
-            this.txtServerPassword.Name = "txtServerPassword";
-            this.txtServerPassword.Size = new System.Drawing.Size(100, 20);
-            this.txtServerPassword.TabIndex = 3;
+            this.txtServerAddress.Location = new System.Drawing.Point(94, 13);
+            this.txtServerAddress.Name = "txtServerAddress";
+            this.txtServerAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtServerAddress.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Server Address:";
             // 
             // groupBox2
             // 
@@ -204,23 +204,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Processes";
             // 
-            // label6
+            // label7
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Processes to shutdown:";
-            // 
-            // txtProcessesShutdown
-            // 
-            this.txtProcessesShutdown.Location = new System.Drawing.Point(9, 32);
-            this.txtProcessesShutdown.Multiline = true;
-            this.txtProcessesShutdown.Name = "txtProcessesShutdown";
-            this.txtProcessesShutdown.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtProcessesShutdown.Size = new System.Drawing.Size(185, 62);
-            this.txtProcessesShutdown.TabIndex = 1;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(200, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Processes to restart:";
             // 
             // txtProcessesRestart
             // 
@@ -231,14 +222,23 @@
             this.txtProcessesRestart.Size = new System.Drawing.Size(189, 62);
             this.txtProcessesRestart.TabIndex = 2;
             // 
-            // label7
+            // txtProcessesShutdown
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(200, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Processes to restart:";
+            this.txtProcessesShutdown.Location = new System.Drawing.Point(9, 32);
+            this.txtProcessesShutdown.Multiline = true;
+            this.txtProcessesShutdown.Name = "txtProcessesShutdown";
+            this.txtProcessesShutdown.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtProcessesShutdown.Size = new System.Drawing.Size(185, 62);
+            this.txtProcessesShutdown.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(120, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Processes to shutdown:";
             // 
             // btnCancel
             // 
@@ -248,6 +248,7 @@
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Close";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -257,6 +258,7 @@
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // SettingsForm
             // 
@@ -276,6 +278,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsForm_FormClosing);
+            this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.grpFolders.ResumeLayout(false);
             this.grpFolders.PerformLayout();
             this.groupBox1.ResumeLayout(false);
