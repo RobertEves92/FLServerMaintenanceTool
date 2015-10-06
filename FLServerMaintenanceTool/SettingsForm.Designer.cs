@@ -38,7 +38,13 @@
             this.btnSetBackupFolder = new System.Windows.Forms.Button();
             this.txtBackupFolder = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtServerAddress = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtServerPassword = new System.Windows.Forms.TextBox();
             this.grpFolders.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpFolders
@@ -131,11 +137,57 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Backup:";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtServerPassword);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtServerAddress);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 118);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(404, 46);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "FLHook";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Server Address:";
+            // 
+            // txtServerAddress
+            // 
+            this.txtServerAddress.Location = new System.Drawing.Point(94, 13);
+            this.txtServerAddress.Name = "txtServerAddress";
+            this.txtServerAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtServerAddress.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(200, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Password:";
+            // 
+            // txtServerPassword
+            // 
+            this.txtServerPassword.Location = new System.Drawing.Point(262, 13);
+            this.txtServerPassword.Name = "txtServerPassword";
+            this.txtServerPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtServerPassword.TabIndex = 3;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 348);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpFolders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -147,6 +199,8 @@
             this.Text = "Settings";
             this.grpFolders.ResumeLayout(false);
             this.grpFolders.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -163,6 +217,11 @@
         private System.Windows.Forms.Button btnSetFLFolder;
         private System.Windows.Forms.TextBox txtFreelancerFolder;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtServerPassword;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtServerAddress;
+        private System.Windows.Forms.Label label4;
 
     }
 }
