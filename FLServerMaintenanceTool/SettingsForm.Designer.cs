@@ -52,9 +52,12 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.label8 = new System.Windows.Forms.Label();
+            this.numServerPort = new System.Windows.Forms.NumericUpDown();
             this.grpFolders.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).BeginInit();
             this.SuspendLayout();
             // 
             // grpFolders
@@ -155,6 +158,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.numServerPort);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtServerPassword);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtServerAddress);
@@ -168,15 +173,15 @@
             // 
             // txtServerPassword
             // 
-            this.txtServerPassword.Location = new System.Drawing.Point(262, 13);
+            this.txtServerPassword.Location = new System.Drawing.Point(311, 13);
             this.txtServerPassword.Name = "txtServerPassword";
-            this.txtServerPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtServerPassword.Size = new System.Drawing.Size(81, 20);
             this.txtServerPassword.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(200, 16);
+            this.label5.Location = new System.Drawing.Point(245, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 2;
@@ -186,7 +191,7 @@
             // 
             this.txtServerAddress.Location = new System.Drawing.Point(94, 13);
             this.txtServerAddress.Name = "txtServerAddress";
-            this.txtServerAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtServerAddress.Size = new System.Drawing.Size(63, 20);
             this.txtServerAddress.TabIndex = 1;
             // 
             // label4
@@ -267,6 +272,27 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(159, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Port:";
+            // 
+            // numServerPort
+            // 
+            this.numServerPort.Location = new System.Drawing.Point(194, 13);
+            this.numServerPort.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numServerPort.Name = "numServerPort";
+            this.numServerPort.Size = new System.Drawing.Size(45, 20);
+            this.numServerPort.TabIndex = 5;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,6 +319,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -322,6 +349,8 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown numServerPort;
 
     }
 }
