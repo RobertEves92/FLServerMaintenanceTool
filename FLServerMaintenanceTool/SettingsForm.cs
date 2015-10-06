@@ -41,6 +41,7 @@ namespace FLServerMaintenanceTool
             Properties.Settings.Default.BackupsFolder = txtBackupFolder.Text;
             Properties.Settings.Default.ServerAddress = txtServerAddress.Text;
             Properties.Settings.Default.ServerPassword = txtServerPassword.Text;
+            Properties.Settings.Default.ServerPort = Convert.ToInt32(numServerPort.Value);
             Properties.Settings.Default.CloseProcesses = txtProcessesShutdown.Text;
             Properties.Settings.Default.RestartProcesses = txtProcessesRestart.Text;
             Properties.Settings.Default.Save();
@@ -56,6 +57,7 @@ namespace FLServerMaintenanceTool
             txtBackupFolder.Text = Properties.Settings.Default.BackupsFolder;
             txtServerAddress.Text = Properties.Settings.Default.ServerAddress;
             txtServerPassword.Text = Properties.Settings.Default.ServerPassword;
+            numServerPort.Value = Properties.Settings.Default.ServerPort;
             txtProcessesShutdown.Text = Properties.Settings.Default.CloseProcesses;
             txtProcessesRestart.Text = Properties.Settings.Default.RestartProcesses;
         }
