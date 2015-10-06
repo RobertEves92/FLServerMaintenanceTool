@@ -32,7 +32,6 @@
             this.pgrCountdown = new System.Windows.Forms.ProgressBar();
             this.lblCountdown = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pgrCountdown
@@ -59,24 +58,14 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(257, 167);
+            this.textBox1.Size = new System.Drawing.Size(257, 196);
             this.textBox1.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 227);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(257, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Start Maintainance Now";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblCountdown);
             this.Controls.Add(this.pgrCountdown);
@@ -98,7 +87,6 @@
         private System.Windows.Forms.ProgressBar pgrCountdown;
         private System.Windows.Forms.Label lblCountdown;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
     }
 }
 
