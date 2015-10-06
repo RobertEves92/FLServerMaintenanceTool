@@ -54,6 +54,7 @@ namespace FLServerMaintenanceTool
         void AutoMaintainanceThread()
         {
             //Countdown
+            Countdown();
             //Close Processes
             //Perform Backup
             //Start Processes
@@ -64,11 +65,22 @@ namespace FLServerMaintenanceTool
             int minsToGo = 60;
 
             //Create a connection to flhook and connect it
-            //FLHookConnection flhookconnection = new FLHookConnection();
-            //flhookconnection.Connect();
+            FLHookConnection flhookconnection = new FLHookConnection();
+            flhookconnection.Connect();
 
             //Send 1hr warning
             AddLogLine("Auto Maintainance in 1hr");
+            flhookconnection.SendUniverseMessage("The server will be shut down in about 1 hour for auto-maintenance.");
+            for (int i = 1; i < 15; i++)
+            {
+                Thread.Sleep(60 * 1000);
+                minsToGo--;
+                UpdatePgrCountdown(minsToGo);
+                UpdateLblCountdown(minsToGo);
+            }
+
+            //Diconnect from FLHook
+            flhookconnection.Disconnect();
         }
 
         void AddLogLine(string line)
@@ -78,6 +90,30 @@ namespace FLServerMaintenanceTool
                 txtLog.Invoke(new Action<string>(AddLogLine),new object[]{line});
             }
             else { txtLog.Text = txtLog.Text + line + "\r\n"; }
+        }
+
+        void UpdatePgrCountdown(int mins)
+        {
+            if(pgrCountdown.InvokeRequired)
+            {
+                pgrCountdown.Invoke(new Action<int>(UpdatePgrCountdown),new object[]{mins});
+            }
+            else
+            {
+                pgrCountdown.Value=mins;
+            }
+        }
+
+        void UpdateLblCountdown(int mins)
+        {
+            if (lblCountdown.InvokeRequired)
+            {
+                lblCountdown.Invoke(new Action<int>(UpdateLblCountdown), new object[] { mins });
+            }
+            else
+            {
+                lblCountdown.Text = "Time to Auto Maintainance: " + mins + "mins";
+            }
         }
     }
 }
