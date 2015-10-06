@@ -14,8 +14,8 @@ namespace FLServerMaintenanceTool
         string TimedBackupFolder { get { return BackupFolder + now.Year + "-" + now.Month + "-" + now.Day + " " + now.Hour + "-" + now.Minute + "-" + now.Second + "\\"; } }
         string AccountsBackupFolder { get { return TimedBackupFolder + "\\Accounts\\"; } }
         string FLHookBackupFolder { get { return TimedBackupFolder + "\\flhook\\"; } }
-        string[] flHookFiles = { "flhook.dll", "flhook.ini", "zlib.dll" };
-        DateTime now;
+        readonly string[] flHookFiles = { "flhook.dll", "flhook.ini", "zlib.dll" };
+        readonly DateTime now;
 
         public Backup()
         {

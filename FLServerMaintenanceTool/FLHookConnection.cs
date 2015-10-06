@@ -7,7 +7,7 @@ namespace FLServerMaintenanceTool
 {
     class FLHookConnection
     {
-        Socket socket;
+        readonly Socket socket;
 
         public FLHookConnection()
         {
