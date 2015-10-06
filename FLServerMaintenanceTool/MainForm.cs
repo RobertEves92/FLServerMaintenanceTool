@@ -5,11 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace FLServerMaintenanceTool
 {
     public partial class MainForm : Form
     {
+        Thread MaintainanceThread;
         public MainForm()
         {
             InitializeComponent();
@@ -19,7 +21,8 @@ namespace FLServerMaintenanceTool
         {
             if (Common.AutoRun)
             {
-                //Run
+                MaintainanceThread = new Thread(AutoMaintainanceThread);
+                MaintainanceThread.Start();
             }
             else
             {
@@ -46,6 +49,35 @@ namespace FLServerMaintenanceTool
                 MessageBox.Show("Auto Maintainance is already running.", "Cannot Cancel Maintainance", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 e.Cancel = true;
             }
+        }
+
+        void AutoMaintainanceThread()
+        {
+            //Countdown
+            //Close Processes
+            //Perform Backup
+            //Start Processes
+        }
+
+        void Countdown()
+        {
+            int minsToGo = 60;
+
+            //Create a connection to flhook and connect it
+            //FLHookConnection flhookconnection = new FLHookConnection();
+            //flhookconnection.Connect();
+
+            //Send 1hr warning
+            AddLogLine("Auto Maintainance in 1hr");
+        }
+
+        void AddLogLine(string line)
+        {
+            if (txtLog.InvokeRequired)
+            {
+                txtLog.Invoke(new Action<string>(AddLogLine),new object[]{line});
+            }
+            else { txtLog.Text = txtLog.Text + line + "\r\n"; }
         }
     }
 }
