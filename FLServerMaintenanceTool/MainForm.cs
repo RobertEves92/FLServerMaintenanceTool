@@ -12,6 +12,7 @@ namespace FLServerMaintenanceTool
     public partial class MainForm : Form
     {
         Thread MaintainanceThread;
+        ProcessManager pm;
         int minsToGo = 60;
 
         public MainForm()
@@ -56,14 +57,38 @@ namespace FLServerMaintenanceTool
 
         void AutoMaintainanceThread()
         {
+            pm = new ProcessManager();
+
             //Countdown
             Countdown();
             Common.MaintainanceRunning = true;
             //Close Processes
+            string[] proccessToClose = Properties.Settings.Default.CloseProcesses.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            foreach (string s in proccessToClose)
+            {
+                pm.CloseProcess(s);
+            }
             //Perform Backup
+            Backup backup = new Backup();
+            backup.RunBackup();
             //Start Processes
+            string[] proccessToStart = Properties.Settings.Default.RestartProcesses.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            foreach (string s in proccessToStart)
+            {
+                pm.StartProcess(s);
+            }
         }
 
+        void AddLogLine(string line)
+        {
+            if (txtLog.InvokeRequired)
+            {
+                txtLog.Invoke(new Action<string>(AddLogLine),new object[]{line});
+            }
+            else { txtLog.Text = txtLog.Text + line + "\r\n"; }
+        }
+
+        #region Countdown Methods
         void Countdown()
         {
             //Create a connection to flhook and connect it
@@ -129,15 +154,6 @@ namespace FLServerMaintenanceTool
             }
         }
 
-        void AddLogLine(string line)
-        {
-            if (txtLog.InvokeRequired)
-            {
-                txtLog.Invoke(new Action<string>(AddLogLine),new object[]{line});
-            }
-            else { txtLog.Text = txtLog.Text + line + "\r\n"; }
-        }
-
         void UpdatePgrCountdown(int mins)
         {
             if(pgrCountdown.InvokeRequired)
@@ -168,5 +184,6 @@ namespace FLServerMaintenanceTool
                 }
             }
         }
+        #endregion
     }
 }
