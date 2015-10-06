@@ -59,5 +59,23 @@ namespace FLServerMaintenanceTool
             txtProcessesShutdown.Text = Properties.Settings.Default.CloseProcesses;
             txtProcessesRestart.Text = Properties.Settings.Default.RestartProcesses;
         }
+
+        private void btnSetFLFolder_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.ShowDialog();
+            txtFreelancerFolder.Text = folderBrowserDialog.SelectedPath;
+        }
+
+        private void btnSetAccountsFolder_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.ShowDialog();
+            txtAccountFolder.Text = folderBrowserDialog.SelectedPath;
+        }
+
+        private void btnSetBackupFolder_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.ShowDialog();
+            txtBackupFolder.Text = folderBrowserDialog.SelectedPath;
+        }
     }
 }
