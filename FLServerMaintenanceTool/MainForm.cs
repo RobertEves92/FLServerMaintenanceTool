@@ -12,6 +12,8 @@ namespace FLServerMaintenanceTool
     public partial class MainForm : Form
     {
         Thread MaintainanceThread;
+        int minsToGo = 60;
+
         public MainForm()
         {
             InitializeComponent();
@@ -41,7 +43,8 @@ namespace FLServerMaintenanceTool
                 }
                 else
                 {
-                    //TODO Cancel
+                    MaintainanceThread.Abort();
+                    do { } while (MaintainanceThread.ThreadState == ThreadState.Running);
                 }
             }
             else
@@ -55,6 +58,7 @@ namespace FLServerMaintenanceTool
         {
             //Countdown
             Countdown();
+            Common.MaintainanceRunning = true;
             //Close Processes
             //Perform Backup
             //Start Processes
@@ -62,8 +66,6 @@ namespace FLServerMaintenanceTool
 
         void Countdown()
         {
-            int minsToGo = 60;
-
             //Create a connection to flhook and connect it
             FLHookConnection flhookconnection = new FLHookConnection();
             flhookconnection.Connect();
@@ -71,16 +73,60 @@ namespace FLServerMaintenanceTool
             //Send 1hr warning
             AddLogLine("Auto Maintainance in 1hr");
             flhookconnection.SendUniverseMessage("The server will be shut down in about 1 hour for auto-maintenance.");
-            for (int i = 1; i < 15; i++)
+            Wait(15);
+
+            //Send 45min warning
+            AddLogLine("AutoMaintainance in 45mins");
+            flhookconnection.SendUniverseMessage("The server will be shut down in about 45 minutes for auto-maintenance.");
+            Wait(15);
+
+            //Send 30min warning
+            AddLogLine("Auto Maintainance in 30mins");
+            flhookconnection.SendUniverseMessage("The server will be shut down in about 30 minutes for auto-maintenance.");
+            Wait(15);
+
+            //Send 15min warning
+            AddLogLine("Auto Maintainance in 15mins");
+            flhookconnection.SendUniverseMessage("The server will be shut down in about 15 minutes for auto-maintenance.");
+            Wait(5);
+
+            //Send 10min warning
+            AddLogLine("Auto Maintainance in 10mins");
+            flhookconnection.SendUniverseMessage("The server will be shut down in about 10 minutes for auto-maintenance.");
+            Wait(5);
+
+            //Send 5min warning
+            AddLogLine("Auto Maintainance in 5mins");
+            flhookconnection.SendUniverseMessage("The server will be shut down in about 5 minutes for auto-maintenance.  It will be back up again shortly after.");
+            Wait(4);
+
+            //Send 1min warning
+            AddLogLine("Auto Maintainance in 1min");
+            flhookconnection.SendUniverseMessage("The server will be shut down in about 1 minute for auto-maintenance.  To avoid losing information in your playerfile, please log off NOW!");
+            Wait(1);
+
+            //Send shutdown warning
+            AddLogLine("Auto Maintainance Started");
+            UpdateLblCountdown(0);
+            UpdatePgrCountdown(0);
+
+            //Diconnect from FLHook
+            flhookconnection.Disconnect();
+        }
+
+        private void Wait(int minsToWait)
+        {
+            for (int i = 0; i < minsToWait; i++)
             {
+#if DEBUG
+                Thread.Sleep(1000);
+#else
                 Thread.Sleep(60 * 1000);
+#endif
                 minsToGo--;
                 UpdatePgrCountdown(minsToGo);
                 UpdateLblCountdown(minsToGo);
             }
-
-            //Diconnect from FLHook
-            flhookconnection.Disconnect();
         }
 
         void AddLogLine(string line)
@@ -112,7 +158,14 @@ namespace FLServerMaintenanceTool
             }
             else
             {
-                lblCountdown.Text = "Time to Auto Maintainance: " + mins + "mins";
+                if (mins > 0)
+                {
+                    lblCountdown.Text = "Time to Auto Maintainance: " + mins + "mins";
+                }
+                else
+                {
+                    lblCountdown.Text = "Auto Maintainance Started";
+                }
             }
         }
     }
