@@ -9,7 +9,7 @@ namespace FLServerMaintenanceTool
     {
         public void CloseProcess(string processname)
         {
-            foreach (var process in Process.GetProcessesByName(processname))
+            foreach (var process in Process.GetProcessesByName(processname.Replace(".exe","")))
             {
                 //Close process and free resources
                 process.CloseMainWindow();
