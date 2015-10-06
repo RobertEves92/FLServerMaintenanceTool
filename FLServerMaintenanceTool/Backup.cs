@@ -42,7 +42,7 @@ namespace FLServerMaintenanceTool
 
             //Copy FLHook Logs
             DirectoryCopy(EXEFolder + "flhook_logs", TimedBackupFolder + "flhook_logs", true);
-            Directory.Delete(EXEFolder + "flhook_logs"); //Stops log build up, we only want logs since the last backup
+            Directory.Delete(EXEFolder + "flhook_logs",true); //Stops log build up, we only want logs since the last backup
 
             //Copy FLHook Plugins
             DirectoryCopy(EXEFolder + "flhook_plugins", TimedBackupFolder + "flhook_plugins", true);
