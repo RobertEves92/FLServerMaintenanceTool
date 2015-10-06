@@ -66,17 +66,22 @@ namespace FLServerMaintenanceTool
             string[] proccessToClose = Properties.Settings.Default.CloseProcesses.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
             foreach (string s in proccessToClose)
             {
+                AddLogLine("Shutting down " + s);
                 pm.CloseProcess(s);
             }
             //Perform Backup
+            AddLogLine("Starting Backups");
             Backup backup = new Backup();
             backup.RunBackup();
+            AddLogLine("Backups complete");
             //Start Processes
             string[] proccessToStart = Properties.Settings.Default.RestartProcesses.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
             foreach (string s in proccessToStart)
             {
+                AddLogLine("Starting " + s);
                 pm.StartProcess(s);
             }
+            AddLogLine("Auto Maintainance Completed");
         }
 
         void AddLogLine(string line)
