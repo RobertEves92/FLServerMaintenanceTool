@@ -21,7 +21,17 @@ namespace FLServerMaintenanceTool
             IPAddress ipAdd = IPAddress.Parse(Properties.Settings.Default.ServerAddress);
             IPEndPoint remoteEP = new IPEndPoint(ipAdd, Properties.Settings.Default.ServerPort);
             socket.Connect(remoteEP);
-            socket.Send(GetBytes("pass " + Properties.Settings.Default.ServerPassword));
+            SendCommand("pass" + Properties.Settings.Default.ServerPassword);
+        }
+
+        public void SendUniverseMessage(String message)
+        {
+            SendCommand("msgu " + message);
+        }
+
+        public void SendCommand(String command)
+        {
+            socket.Send(GetBytes(command));
         }
 
         public void Disconnect()
@@ -31,6 +41,7 @@ namespace FLServerMaintenanceTool
 
         private byte[] GetBytes(String data)
         {
+            //convert data string to byte array and add linebreaks
             byte[] byData = Encoding.ASCII.GetBytes(data + "\r\n");
             return byData;
         }
