@@ -43,8 +43,14 @@
             this.txtServerAddress = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtServerPassword = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtProcessesShutdown = new System.Windows.Forms.TextBox();
+            this.txtProcessesRestart = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.grpFolders.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpFolders
@@ -182,11 +188,61 @@
             this.txtServerPassword.Size = new System.Drawing.Size(100, 20);
             this.txtServerPassword.TabIndex = 3;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.txtProcessesRestart);
+            this.groupBox2.Controls.Add(this.txtProcessesShutdown);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Location = new System.Drawing.Point(12, 170);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(404, 100);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Processes";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(120, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Processes to shutdown:";
+            // 
+            // txtProcessesShutdown
+            // 
+            this.txtProcessesShutdown.Location = new System.Drawing.Point(9, 32);
+            this.txtProcessesShutdown.Multiline = true;
+            this.txtProcessesShutdown.Name = "txtProcessesShutdown";
+            this.txtProcessesShutdown.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtProcessesShutdown.Size = new System.Drawing.Size(185, 62);
+            this.txtProcessesShutdown.TabIndex = 1;
+            // 
+            // txtProcessesRestart
+            // 
+            this.txtProcessesRestart.Location = new System.Drawing.Point(203, 32);
+            this.txtProcessesRestart.Multiline = true;
+            this.txtProcessesRestart.Name = "txtProcessesRestart";
+            this.txtProcessesRestart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtProcessesRestart.Size = new System.Drawing.Size(189, 62);
+            this.txtProcessesRestart.TabIndex = 2;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(200, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Processes to restart:";
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 348);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpFolders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -201,6 +257,8 @@
             this.grpFolders.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -222,6 +280,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtServerAddress;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtProcessesRestart;
+        private System.Windows.Forms.TextBox txtProcessesShutdown;
+        private System.Windows.Forms.Label label6;
 
     }
 }
