@@ -10,7 +10,8 @@ namespace FLServerMaintenanceTool
         //Application Properties shortcuts
         string BackupFolder { get { return Properties.Settings.Default.BackupsFolder+"\\"; } }
         string AccountsFolder { get { return Properties.Settings.Default.AccountsFolder + "\\"; } }
-        string ExeFolder { get { return Properties.Settings.Default.FLFolder + "\\"; } }
+        string FLFolder { get { return Properties.Settings.Default.FLFolder + "\\"; } }
+        string EXEFolder { get { return FLFolder + "EXE\\"; } }
 
         string TimedBackupFolder { get { return BackupFolder + now.Year + "-" + now.Month + "-" + now.Day + " " + now.Hour + "-" + now.Minute + "-" + now.Second + "\\"; } }
         string AccountsBackupFolder { get { return TimedBackupFolder + "\\Accounts\\"; } }
@@ -36,15 +37,15 @@ namespace FLServerMaintenanceTool
             Directory.CreateDirectory(FLHookBackupFolder);
             foreach (string s in flHookFiles)
             {
-                File.Copy(ExeFolder + s, FLHookBackupFolder + s);
+                File.Copy(EXEFolder + s, FLHookBackupFolder + s);
             }
 
             //Copy FLHook Logs
-            DirectoryCopy(ExeFolder + "flhook_logs", TimedBackupFolder + "flhook_logs", true);
-            Directory.Delete(ExeFolder + "flhook_logs"); //Stops log build up, we only want logs since the last backup
+            DirectoryCopy(EXEFolder + "flhook_logs", TimedBackupFolder + "flhook_logs", true);
+            Directory.Delete(EXEFolder + "flhook_logs",true); //Stops log build up, we only want logs since the last backup
 
             //Copy FLHook Plugins
-            DirectoryCopy(ExeFolder + "flhook_plugins", TimedBackupFolder + "flhook_plugins", true);
+            DirectoryCopy(EXEFolder + "flhook_plugins", TimedBackupFolder + "flhook_plugins", true);
         }
 
         private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)

@@ -26,7 +26,9 @@ namespace FLServerMaintenanceTool
 
         public void SendUniverseMessage(String message)
         {
+#if !DEBUG
             SendCommand("msgu " + message);
+#endif
         }
 
         public void SendCommand(String command)

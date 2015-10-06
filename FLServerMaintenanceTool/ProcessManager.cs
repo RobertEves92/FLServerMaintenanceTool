@@ -15,11 +15,7 @@ namespace FLServerMaintenanceTool
                 process.CloseMainWindow();
                 process.Close();
 
-                System.Threading.Thread.Sleep(5000); //wait 5s
-
-                //if the process continues to run after 5s, kill it
-                if (!process.HasExited)
-                    process.Kill();
+                System.Threading.Thread.Sleep(2500); //wait 2.5s
             }
         }
 
