@@ -1,4 +1,6 @@
-﻿namespace FLServerMaintenanceTool
+﻿using FLServerMaintainanceSettings;
+
+namespace FLServerMaintainanceSettings
 {
     partial class SettingsForm
     {

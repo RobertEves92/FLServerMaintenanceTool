@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace FLServerMaintenanceTool
+namespace FLServerMaintainanceSettings
 {
     public partial class SettingsForm : Form
     {
