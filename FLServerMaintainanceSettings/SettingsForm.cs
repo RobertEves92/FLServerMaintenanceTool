@@ -155,5 +155,31 @@ namespace FLServerMaintainanceSettings
                 listViewCountdown.Items.Add(item);
             }
         }
+
+        private void BtnEditClick(object sender, EventArgs e)
+        {
+            if (listViewCountdown.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Only one item should be selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (listViewCountdown.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select an item to edit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                InputBox inputBox = new InputBox();
+                inputBox.ConsoleMessage = listViewCountdown.SelectedItems[0].Text;
+                inputBox.UniverseMessage = listViewCountdown.SelectedItems[0].SubItems[1].Text;
+                inputBox.WaitTime = listViewCountdown.SelectedItems[0].SubItems[2].Text;
+
+                if (inputBox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    listViewCountdown.SelectedItems[0].Text = inputBox.ConsoleMessage;
+                    listViewCountdown.SelectedItems[0].SubItems[1].Text = inputBox.UniverseMessage;
+                    listViewCountdown.SelectedItems[0].SubItems[2].Text = inputBox.WaitTime;
+                }
+            }
+        }
     }
 }

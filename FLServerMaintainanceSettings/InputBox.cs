@@ -10,21 +10,13 @@ namespace FLServerMaintainanceSettings
 {
     public partial class InputBox : Form
     {
-        public string ConsoleMessage { get { return txtConsole.Text; } }
-        public string UniverseMessage { get { return txtUniverse.Text; } }
-        public string WaitTime { get { return Convert.ToInt32(numWait.Value).ToString(); } }
+        public string ConsoleMessage { get { return txtConsole.Text; } set { txtConsole.Text = value; } }
+        public string UniverseMessage { get { return txtUniverse.Text; } set { txtUniverse.Text = value; } }
+        public string WaitTime { get { return Convert.ToInt32(numWait.Value).ToString(); } set { numWait.Value = decimal.Parse(value); } }
 
         public InputBox()
         {
             InitializeComponent();
-        }
-
-        public InputBox(string console, string universe, int wait)
-        {
-            InitializeComponent();
-            txtConsole.Text = console;
-            txtUniverse.Text = universe;
-            numWait.Value = wait;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
