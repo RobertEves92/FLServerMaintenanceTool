@@ -1,29 +1,19 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace FLServerMaintenanceTool
 {
-    static class Program
+    class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
         static void Main(string[] args)
         {
-            foreach (string s in args)
-            {
-                if (s == "/autorun")
-                    Common.AutoRun = true;
-            }
+            Console.Title = "FL Server Maintainance";
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            if (Common.AutoRun)
-                Application.Run(new MainForm());
-            else
-                Application.Run(new SettingsForm());
+            Countdown.StartCountdown();
+            ProcessHelper.CloseProcesses();
+            Backup.RunBackup();
+            ProcessHelper.StartProcesses();
+            Console.WriteLine("Auto Maintainance Completed");
+            Console.ReadLine();
         }
     }
 }

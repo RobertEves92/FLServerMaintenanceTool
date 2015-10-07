@@ -3,47 +3,48 @@ using System.IO;
 
 namespace FLServerMaintenanceTool
 {
-    class Backup
+    public static class Backup
     {
-        //Application Properties shortcuts
-        string BackupFolder { get { return Properties.Settings.Default.BackupsFolder+"\\"; } }
-        string AccountsFolder { get { return Properties.Settings.Default.AccountsFolder + "\\"; } }
-        string FLFolder { get { return Properties.Settings.Default.FLFolder + "\\"; } }
-        string ExeFolder { get { return FLFolder + "EXE\\"; } }
+        private static string TimedBackupFolder { get { return Common.BackupFolder + now.Year + "-" + now.Month + "-" + now.Day + " " + now.Hour + "-" + now.Minute + "-" + now.Second + "\\"; } }
+        private static string AccountsBackupFolder { get { return TimedBackupFolder + "\\Accounts\\"; } }
+        private static string FLHookBackupFolder { get { return TimedBackupFolder + "\\flhook\\"; } }
+        private static readonly string[] flHookFiles = { "flhook.dll", "flhook.ini", "zlib.dll" };
+        private static DateTime now;
 
-        string TimedBackupFolder { get { return BackupFolder + now.Year + "-" + now.Month + "-" + now.Day + " " + now.Hour + "-" + now.Minute + "-" + now.Second + "\\"; } }
-        string AccountsBackupFolder { get { return TimedBackupFolder + "\\Accounts\\"; } }
-        string FLHookBackupFolder { get { return TimedBackupFolder + "\\flhook\\"; } }
-        readonly string[] flHookFiles = { "flhook.dll", "flhook.ini", "zlib.dll" };
-        readonly DateTime now;
-
-        public Backup()
+        public static void RunBackup()
         {
             //Get Current Date and Time
             now = DateTime.Now;
-        }
 
-        public void RunBackup()
-        {
             //Create Timed backup folder
+            Console.Write("Creating Backup Folder...");
             Directory.CreateDirectory(TimedBackupFolder);
+            Console.WriteLine("DONE");
 
             //Copy player accounts / server settings
-            DirectoryCopy(AccountsFolder, AccountsBackupFolder, true);
+            Console.Write("Backing Up Accounts and Server Files...");
+            DirectoryCopy(Common.AccountsFolder, AccountsBackupFolder, true);
+            Console.WriteLine("DONE");
 
             //Copy FLHook files
+            Console.Write("Backing Up FLHook Files...");
             Directory.CreateDirectory(FLHookBackupFolder);
             foreach (string s in flHookFiles)
             {
-                File.Copy(ExeFolder + s, FLHookBackupFolder + s);
+                File.Copy(Common.ExeFolder + s, FLHookBackupFolder + s);
             }
+            Console.WriteLine("DONE");
 
             //Copy FLHook Logs
-            DirectoryCopy(ExeFolder + "flhook_logs", TimedBackupFolder + "flhook_logs", true);
-            Directory.Delete(ExeFolder + "flhook_logs",true); //Stops log build up, we only want logs since the last backup
+            Console.Write("Backup Up FLHook Logs...");
+            DirectoryCopy(Common.ExeFolder + "flhook_logs", TimedBackupFolder + "flhook_logs", true);
+            Directory.Delete(Common.ExeFolder + "flhook_logs", true); //Stops log build up, we only want logs since the last backup
+            Console.WriteLine("DONE");
 
             //Copy FLHook Plugins
-            DirectoryCopy(ExeFolder + "flhook_plugins", TimedBackupFolder + "flhook_plugins", true);
+            Console.Write("Backing Up FLHook Plugins and Settings...");
+            DirectoryCopy(Common.ExeFolder + "flhook_plugins", TimedBackupFolder + "flhook_plugins", true);
+            Console.WriteLine("DONE");
         }
 
         private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)

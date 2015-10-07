@@ -1,4 +1,6 @@
-﻿namespace FLServerMaintenanceTool
+﻿using FLServerMaintainanceSettings;
+
+namespace FLServerMaintainanceSettings
 {
     partial class SettingsForm
     {
@@ -40,6 +42,8 @@
             this.txtFreelancerFolder = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numServerPort = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtServerPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtServerAddress = new System.Windows.Forms.TextBox();
@@ -52,12 +56,10 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.label8 = new System.Windows.Forms.Label();
-            this.numServerPort = new System.Windows.Forms.NumericUpDown();
             this.grpFolders.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpFolders
@@ -171,6 +173,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "FLHook";
             // 
+            // numServerPort
+            // 
+            this.numServerPort.Location = new System.Drawing.Point(194, 13);
+            this.numServerPort.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numServerPort.Name = "numServerPort";
+            this.numServerPort.Size = new System.Drawing.Size(45, 20);
+            this.numServerPort.TabIndex = 5;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(159, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Port:";
+            // 
             // txtServerPassword
             // 
             this.txtServerPassword.Location = new System.Drawing.Point(311, 13);
@@ -272,27 +295,6 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(159, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Port:";
-            // 
-            // numServerPort
-            // 
-            this.numServerPort.Location = new System.Drawing.Point(194, 13);
-            this.numServerPort.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.numServerPort.Name = "numServerPort";
-            this.numServerPort.Size = new System.Drawing.Size(45, 20);
-            this.numServerPort.TabIndex = 5;
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,22 +306,21 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpFolders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Settings";
+            this.Text = "Freelancer Maintainance Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsForm_FormClosing);
             this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.grpFolders.ResumeLayout(false);
             this.grpFolders.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).EndInit();
             this.ResumeLayout(false);
 
         }

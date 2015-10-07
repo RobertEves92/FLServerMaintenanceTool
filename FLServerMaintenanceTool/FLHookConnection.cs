@@ -17,10 +17,10 @@ namespace FLServerMaintenanceTool
         public void Connect()
         {
             //Create connection to FLHook and send password
-            IPAddress ipAdd = IPAddress.Parse(Properties.Settings.Default.ServerAddress);
-            IPEndPoint remoteEP = new IPEndPoint(ipAdd, Properties.Settings.Default.ServerPort);
+            IPAddress ipAdd = IPAddress.Parse(Common.IniFile.IniReadValue("server", "address"));
+            IPEndPoint remoteEP = new IPEndPoint(ipAdd, int.Parse(Common.IniFile.IniReadValue("server", "port")));
             socket.Connect(remoteEP);
-            SendCommand("pass" + Properties.Settings.Default.ServerPassword);
+            SendCommand("pass" + Common.IniFile.IniReadValue("server", "password"));
         }
 
         public void SendUniverseMessage(String message)
