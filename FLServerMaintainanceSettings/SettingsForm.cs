@@ -40,6 +40,15 @@ namespace FLServerMaintainanceSettings
 
         private void BtnSaveClick(object sender, EventArgs e)
         {
+            SaveSettings();
+
+            //close without warning
+            warnClose = false;
+            this.Close();
+        }
+
+        private void SaveSettings()
+        {
             //Save new settings
             iniFile.IniWriteValue("folders", "freelancer", txtFreelancerFolder.Text);
             iniFile.IniWriteValue("folders", "accounts", txtAccountFolder.Text);
@@ -49,14 +58,17 @@ namespace FLServerMaintainanceSettings
             iniFile.IniWriteValue("server", "port", numServerPort.Value.ToString());
             iniFile.IniWriteValue("server", "password", txtServerPassword.Text);
 
-            iniFile.IniWriteValue("processes", "shutdown", txtProcessesShutdown.Text.Replace("\r\n",","));
+            iniFile.IniWriteValue("processes", "shutdown", txtProcessesShutdown.Text.Replace("\r\n", ","));
             iniFile.IniWriteValue("processes", "restart", txtProcessesRestart.Text.Replace("\r\n", ","));
 
-            //add foreach loop here to save countdown messages
-
-            //close without warning
-            warnClose = false;
-            this.Close();
+            iniFile.IniWriteValue("countdown", "enabled", chkCountdown.Checked.ToString());
+            iniFile.IniWriteValue("countdown", "count", listViewCountdown.Items.Count.ToString());
+            for (int i = 0; i < listViewCountdown.Items.Count; i++)
+            {
+                iniFile.IniWriteValue("countdown", "item" + i + "console", listViewCountdown.Items[i].Text);
+                iniFile.IniWriteValue("countdown", "item" + i + "universe", listViewCountdown.Items[i].SubItems[1].Text);
+                iniFile.IniWriteValue("countdown", "item" + i + "wait", listViewCountdown.Items[i].SubItems[2].Text);
+            }
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)
@@ -75,7 +87,22 @@ namespace FLServerMaintainanceSettings
                 txtProcessesShutdown.Text = iniFile.IniReadValue("processes", "shutdown").Replace(",", "\r\n");
                 txtProcessesRestart.Text = iniFile.IniReadValue("processes", "restart").Replace(",", "\r\n");
 
-                //add foreach loop here to load countdown items
+                listViewCountdown.Items.Clear();
+                chkCountdown.Checked = Boolean.Parse(iniFile.IniReadValue("countdown","enabled"));
+                int items = int.Parse(iniFile.IniReadValue("countdown", "count"));
+                for (int i = 0; i < items; i++)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Text = iniFile.IniReadValue("countdown", "item" + i + "console");
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, iniFile.IniReadValue("countdown", "item" + i + "universe")));
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, iniFile.IniReadValue("countdown", "item" + i + "wait")));
+                    listViewCountdown.Items.Add(item);
+                }
+            }
+            else
+            {
+                //run save method to save default values
+                SaveSettings();
             }
         }
 
