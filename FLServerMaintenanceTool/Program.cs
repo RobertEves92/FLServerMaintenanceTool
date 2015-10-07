@@ -9,21 +9,12 @@ namespace FLServerMaintenanceTool
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
-            foreach (string s in args)
-            {
-                if (s == "/autorun")
-                    Common.AutoRun = true;
-            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            if (Common.AutoRun)
-                Application.Run(new MainForm());
-            else
-                Application.Run(new SettingsForm());
+            Application.Run(new MainForm());
         }
     }
 }

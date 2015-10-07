@@ -17,15 +17,8 @@ namespace FLServerMaintenanceTool
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (Common.AutoRun)
-            {
-                maintainanceThread = new Thread(AutoMaintainanceThread);
-                maintainanceThread.Start();
-            }
-            else
-            {
-                lblCountdown.Text = "Auto Maintainance not running - restart with /autorun";
-            }
+            maintainanceThread = new Thread(AutoMaintainanceThread);
+            maintainanceThread.Start();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
