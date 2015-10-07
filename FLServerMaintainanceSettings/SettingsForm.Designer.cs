@@ -31,6 +31,36 @@ namespace FLServerMaintainanceSettings
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 1hr",
+            "The server will be shut down in about 1 hour for auto-maintenance.",
+            "15"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 45mins",
+            "The server will be shut down in about 45 minutes for auto-maintenance.",
+            "15"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 30mins",
+            "The server will be shut down in about 30 minutes for auto-maintenance.",
+            "15"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 15mins",
+            "The server will be shut down in about 15 minutes for auto-maintenance.",
+            "5"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 10mins",
+            "The server will be shut down in about 10 minutes for auto-maintenance.",
+            "5"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 5mins",
+            "The server will be shut down in about 5 minutes for auto-maintenance.  It will be" +
+                " back up again shortly after.",
+            "4"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 1min",
+            "The server will be shut down in about 1 minute for auto-maintenance.  To avoid lo" +
+                "sing information in your playerfile, please log off NOW!",
+            "1"}, -1);
             this.grpFolders = new System.Windows.Forms.GroupBox();
             this.btnSetBackupFolder = new System.Windows.Forms.Button();
             this.txtBackupFolder = new System.Windows.Forms.TextBox();
@@ -56,10 +86,20 @@ namespace FLServerMaintainanceSettings
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.listViewCountdown = new System.Windows.Forms.ListView();
+            this.clmConsoleMessage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmUniverseMessage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmWaitTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chkCountdown = new System.Windows.Forms.CheckBox();
             this.grpFolders.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpFolders
@@ -277,7 +317,7 @@ namespace FLServerMaintainanceSettings
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(341, 276);
+            this.btnCancel.Location = new System.Drawing.Point(879, 276);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -287,7 +327,7 @@ namespace FLServerMaintainanceSettings
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(260, 276);
+            this.btnSave.Location = new System.Drawing.Point(798, 276);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -295,11 +335,101 @@ namespace FLServerMaintainanceSettings
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.chkCountdown);
+            this.groupBox3.Controls.Add(this.listViewCountdown);
+            this.groupBox3.Controls.Add(this.btnAdd);
+            this.groupBox3.Controls.Add(this.btnEdit);
+            this.groupBox3.Controls.Add(this.btnRemove);
+            this.groupBox3.Location = new System.Drawing.Point(431, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(529, 258);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Countdown";
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(448, 229);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 1;
+            this.btnRemove.Text = "Delete";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(367, 229);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(286, 229);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // listViewCountdown
+            // 
+            this.listViewCountdown.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmConsoleMessage,
+            this.clmUniverseMessage,
+            this.clmWaitTime});
+            this.listViewCountdown.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7});
+            this.listViewCountdown.Location = new System.Drawing.Point(6, 13);
+            this.listViewCountdown.Name = "listViewCountdown";
+            this.listViewCountdown.Size = new System.Drawing.Size(517, 210);
+            this.listViewCountdown.TabIndex = 4;
+            this.listViewCountdown.UseCompatibleStateImageBehavior = false;
+            this.listViewCountdown.View = System.Windows.Forms.View.Details;
+            // 
+            // clmConsoleMessage
+            // 
+            this.clmConsoleMessage.Text = "Console Message";
+            this.clmConsoleMessage.Width = 138;
+            // 
+            // clmUniverseMessage
+            // 
+            this.clmUniverseMessage.Text = "Universe Message";
+            this.clmUniverseMessage.Width = 302;
+            // 
+            // clmWaitTime
+            // 
+            this.clmWaitTime.Text = "Wait (mins)";
+            this.clmWaitTime.Width = 70;
+            // 
+            // chkCountdown
+            // 
+            this.chkCountdown.AutoSize = true;
+            this.chkCountdown.Checked = true;
+            this.chkCountdown.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCountdown.Location = new System.Drawing.Point(6, 233);
+            this.chkCountdown.Name = "chkCountdown";
+            this.chkCountdown.Size = new System.Drawing.Size(189, 17);
+            this.chkCountdown.TabIndex = 5;
+            this.chkCountdown.Text = "Use Countdown? (Recommended)";
+            this.chkCountdown.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 304);
+            this.ClientSize = new System.Drawing.Size(972, 304);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox2);
@@ -321,6 +451,8 @@ namespace FLServerMaintainanceSettings
             ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -352,6 +484,15 @@ namespace FLServerMaintainanceSettings
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown numServerPort;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.CheckBox chkCountdown;
+        private System.Windows.Forms.ListView listViewCountdown;
+        private System.Windows.Forms.ColumnHeader clmConsoleMessage;
+        private System.Windows.Forms.ColumnHeader clmUniverseMessage;
+        private System.Windows.Forms.ColumnHeader clmWaitTime;
 
     }
 }
