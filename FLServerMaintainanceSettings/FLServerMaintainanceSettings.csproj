@@ -78,6 +78,12 @@
   <ItemGroup>
     <Content Include="freelancer_tool_icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ini\Ini.csproj">
+      <Project>{EDAD51E7-4DA8-47DA-B080-68691E58AF57}</Project>
+      <Name>Ini</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
