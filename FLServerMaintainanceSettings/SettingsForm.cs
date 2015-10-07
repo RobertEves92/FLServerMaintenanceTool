@@ -123,5 +123,24 @@ namespace FLServerMaintainanceSettings
             folderBrowserDialog.ShowDialog();
             txtBackupFolder.Text = folderBrowserDialog.SelectedPath;
         }
+
+        private void BtnRemoveClick(object sender, EventArgs e)
+        {
+            if (listViewCountdown.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No item(s) selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete the selected countdown items?", "Delete Countdown Items?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    foreach (ListViewItem item in listViewCountdown.SelectedItems)
+                    {
+                        item.Remove();
+                    }
+                }
+            }
+        }
     }
 }

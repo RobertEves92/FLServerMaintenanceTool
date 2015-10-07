@@ -87,14 +87,14 @@ namespace FLServerMaintainanceSettings
             this.btnSave = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.chkCountdown = new System.Windows.Forms.CheckBox();
             this.listViewCountdown = new System.Windows.Forms.ListView();
             this.clmConsoleMessage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmUniverseMessage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmWaitTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chkCountdown = new System.Windows.Forms.CheckBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.grpFolders.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).BeginInit();
@@ -349,32 +349,17 @@ namespace FLServerMaintainanceSettings
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Countdown";
             // 
-            // btnRemove
+            // chkCountdown
             // 
-            this.btnRemove.Location = new System.Drawing.Point(448, 229);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 1;
-            this.btnRemove.Text = "Delete";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(367, 229);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 2;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(286, 229);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 3;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.chkCountdown.AutoSize = true;
+            this.chkCountdown.Checked = true;
+            this.chkCountdown.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCountdown.Location = new System.Drawing.Point(6, 233);
+            this.chkCountdown.Name = "chkCountdown";
+            this.chkCountdown.Size = new System.Drawing.Size(189, 17);
+            this.chkCountdown.TabIndex = 5;
+            this.chkCountdown.Text = "Use Countdown? (Recommended)";
+            this.chkCountdown.UseVisualStyleBackColor = true;
             // 
             // listViewCountdown
             // 
@@ -412,17 +397,33 @@ namespace FLServerMaintainanceSettings
             this.clmWaitTime.Text = "Wait (mins)";
             this.clmWaitTime.Width = 70;
             // 
-            // chkCountdown
+            // btnAdd
             // 
-            this.chkCountdown.AutoSize = true;
-            this.chkCountdown.Checked = true;
-            this.chkCountdown.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCountdown.Location = new System.Drawing.Point(6, 233);
-            this.chkCountdown.Name = "chkCountdown";
-            this.chkCountdown.Size = new System.Drawing.Size(189, 17);
-            this.chkCountdown.TabIndex = 5;
-            this.chkCountdown.Text = "Use Countdown? (Recommended)";
-            this.chkCountdown.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(286, 229);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(367, 229);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(448, 229);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 1;
+            this.btnRemove.Text = "Delete";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.BtnRemoveClick);
             // 
             // SettingsForm
             // 
