@@ -142,5 +142,18 @@ namespace FLServerMaintainanceSettings
                 }
             }
         }
+
+        private void BtnAddClick(object sender, EventArgs e)
+        {
+            InputBox inputBox = new InputBox();
+            if (inputBox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = inputBox.ConsoleMessage;
+                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, inputBox.UniverseMessage));
+                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, inputBox.WaitTime));
+                listViewCountdown.Items.Add(item);
+            }
+        }
     }
 }

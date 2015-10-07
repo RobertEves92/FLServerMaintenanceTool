@@ -12,7 +12,7 @@ namespace FLServerMaintainanceSettings
     {
         public string ConsoleMessage { get { return txtConsole.Text; } }
         public string UniverseMessage { get { return txtUniverse.Text; } }
-        public int WaitTime { get { return Convert.ToInt32(numWait.Value); } }
+        public string WaitTime { get { return Convert.ToInt32(numWait.Value).ToString(); } }
 
         public InputBox()
         {
