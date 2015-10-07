@@ -86,8 +86,7 @@ namespace FLServerMaintainanceSettings
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkCountdown = new System.Windows.Forms.CheckBox();
+            this.grpCountdown = new System.Windows.Forms.GroupBox();
             this.listViewCountdown = new System.Windows.Forms.ListView();
             this.clmConsoleMessage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmUniverseMessage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -95,11 +94,12 @@ namespace FLServerMaintainanceSettings
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.chkCountdown = new System.Windows.Forms.CheckBox();
             this.grpFolders.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.grpCountdown.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpFolders
@@ -223,7 +223,7 @@ namespace FLServerMaintainanceSettings
             0});
             this.numServerPort.Name = "numServerPort";
             this.numServerPort.Size = new System.Drawing.Size(45, 20);
-            this.numServerPort.TabIndex = 5;
+            this.numServerPort.TabIndex = 3;
             // 
             // label8
             // 
@@ -231,7 +231,7 @@ namespace FLServerMaintainanceSettings
             this.label8.Location = new System.Drawing.Point(159, 16);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 13);
-            this.label8.TabIndex = 4;
+            this.label8.TabIndex = 2;
             this.label8.Text = "Port:";
             // 
             // txtServerPassword
@@ -239,7 +239,7 @@ namespace FLServerMaintainanceSettings
             this.txtServerPassword.Location = new System.Drawing.Point(311, 13);
             this.txtServerPassword.Name = "txtServerPassword";
             this.txtServerPassword.Size = new System.Drawing.Size(81, 20);
-            this.txtServerPassword.TabIndex = 3;
+            this.txtServerPassword.TabIndex = 5;
             // 
             // label5
             // 
@@ -247,7 +247,7 @@ namespace FLServerMaintainanceSettings
             this.label5.Location = new System.Drawing.Point(245, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 13);
-            this.label5.TabIndex = 2;
+            this.label5.TabIndex = 4;
             this.label5.Text = "Password:";
             // 
             // txtServerAddress
@@ -274,7 +274,7 @@ namespace FLServerMaintainanceSettings
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(12, 170);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(404, 100);
+            this.groupBox2.Size = new System.Drawing.Size(404, 105);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Processes";
@@ -285,7 +285,7 @@ namespace FLServerMaintainanceSettings
             this.label7.Location = new System.Drawing.Point(200, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 13);
-            this.label7.TabIndex = 3;
+            this.label7.TabIndex = 2;
             this.label7.Text = "Processes to restart:";
             // 
             // txtProcessesRestart
@@ -295,7 +295,7 @@ namespace FLServerMaintainanceSettings
             this.txtProcessesRestart.Name = "txtProcessesRestart";
             this.txtProcessesRestart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtProcessesRestart.Size = new System.Drawing.Size(189, 62);
-            this.txtProcessesRestart.TabIndex = 2;
+            this.txtProcessesRestart.TabIndex = 3;
             // 
             // txtProcessesShutdown
             // 
@@ -317,49 +317,35 @@ namespace FLServerMaintainanceSettings
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(879, 276);
+            this.btnCancel.Location = new System.Drawing.Point(879, 281);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Close";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(798, 276);
+            this.btnSave.Location = new System.Drawing.Point(798, 281);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 4;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
-            // groupBox3
+            // grpCountdown
             // 
-            this.groupBox3.Controls.Add(this.chkCountdown);
-            this.groupBox3.Controls.Add(this.listViewCountdown);
-            this.groupBox3.Controls.Add(this.btnAdd);
-            this.groupBox3.Controls.Add(this.btnEdit);
-            this.groupBox3.Controls.Add(this.btnRemove);
-            this.groupBox3.Location = new System.Drawing.Point(431, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(529, 258);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Countdown";
-            // 
-            // chkCountdown
-            // 
-            this.chkCountdown.AutoSize = true;
-            this.chkCountdown.Checked = true;
-            this.chkCountdown.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCountdown.Location = new System.Drawing.Point(6, 233);
-            this.chkCountdown.Name = "chkCountdown";
-            this.chkCountdown.Size = new System.Drawing.Size(189, 17);
-            this.chkCountdown.TabIndex = 5;
-            this.chkCountdown.Text = "Use Countdown? (Recommended)";
-            this.chkCountdown.UseVisualStyleBackColor = true;
+            this.grpCountdown.Controls.Add(this.listViewCountdown);
+            this.grpCountdown.Controls.Add(this.btnAdd);
+            this.grpCountdown.Controls.Add(this.btnEdit);
+            this.grpCountdown.Controls.Add(this.btnRemove);
+            this.grpCountdown.Location = new System.Drawing.Point(431, 12);
+            this.grpCountdown.Name = "grpCountdown";
+            this.grpCountdown.Size = new System.Drawing.Size(529, 263);
+            this.grpCountdown.TabIndex = 4;
+            this.grpCountdown.TabStop = false;
             // 
             // listViewCountdown
             // 
@@ -367,6 +353,9 @@ namespace FLServerMaintainanceSettings
             this.clmConsoleMessage,
             this.clmUniverseMessage,
             this.clmWaitTime});
+            this.listViewCountdown.FullRowSelect = true;
+            this.listViewCountdown.GridLines = true;
+            this.listViewCountdown.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewCountdown.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
@@ -375,10 +364,10 @@ namespace FLServerMaintainanceSettings
             listViewItem5,
             listViewItem6,
             listViewItem7});
-            this.listViewCountdown.Location = new System.Drawing.Point(6, 13);
+            this.listViewCountdown.Location = new System.Drawing.Point(6, 18);
             this.listViewCountdown.Name = "listViewCountdown";
             this.listViewCountdown.Size = new System.Drawing.Size(517, 210);
-            this.listViewCountdown.TabIndex = 4;
+            this.listViewCountdown.TabIndex = 0;
             this.listViewCountdown.UseCompatibleStateImageBehavior = false;
             this.listViewCountdown.View = System.Windows.Forms.View.Details;
             // 
@@ -399,17 +388,17 @@ namespace FLServerMaintainanceSettings
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(286, 229);
+            this.btnAdd.Location = new System.Drawing.Point(286, 234);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 3;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.BtnAddClick);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(367, 229);
+            this.btnEdit.Location = new System.Drawing.Point(367, 234);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 2;
@@ -419,20 +408,34 @@ namespace FLServerMaintainanceSettings
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(448, 229);
+            this.btnRemove.Location = new System.Drawing.Point(448, 234);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 1;
+            this.btnRemove.TabIndex = 3;
             this.btnRemove.Text = "Delete";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.BtnRemoveClick);
+            // 
+            // chkCountdown
+            // 
+            this.chkCountdown.AutoSize = true;
+            this.chkCountdown.Checked = true;
+            this.chkCountdown.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCountdown.Location = new System.Drawing.Point(440, 12);
+            this.chkCountdown.Name = "chkCountdown";
+            this.chkCountdown.Size = new System.Drawing.Size(161, 17);
+            this.chkCountdown.TabIndex = 3;
+            this.chkCountdown.Text = "Countdown (Recommended)";
+            this.chkCountdown.UseVisualStyleBackColor = true;
+            this.chkCountdown.CheckedChanged += new System.EventHandler(this.ChkCountdownCheckedChanged);
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 304);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(972, 311);
+            this.Controls.Add(this.chkCountdown);
+            this.Controls.Add(this.grpCountdown);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox2);
@@ -454,9 +457,9 @@ namespace FLServerMaintainanceSettings
             ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.grpCountdown.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -487,7 +490,7 @@ namespace FLServerMaintainanceSettings
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown numServerPort;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grpCountdown;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnRemove;

@@ -181,5 +181,10 @@ namespace FLServerMaintainanceSettings
                 }
             }
         }
+
+        private void ChkCountdownCheckedChanged(object sender, EventArgs e)
+        {
+            grpCountdown.Enabled = chkCountdown.Checked;
+        }
     }
 }
