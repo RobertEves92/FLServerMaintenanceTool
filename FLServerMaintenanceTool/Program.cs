@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace FLServerMaintenanceTool
 {
-    static class Program
+    class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
+            Console.Title = "FL Server Maintainance";
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            Console.ReadLine();
         }
     }
 }
