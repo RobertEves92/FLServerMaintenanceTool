@@ -9,14 +9,5 @@ namespace FLServerMaintenanceTool
         public string ConsoleMessage { get; set; }
         public string UniverseMessage { get; set; }
         public int WaitTime { get; set; }
-
-        public CountdownItem() { }
-
-        public CountdownItem(String consoleMessage, String universeMessage, Int32 waitTime)
-        {
-            ConsoleMessage = consoleMessage;
-            UniverseMessage = universeMessage;
-            WaitTime = waitTime;
-        }
     }
 }

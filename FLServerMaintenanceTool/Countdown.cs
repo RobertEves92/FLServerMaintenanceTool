@@ -9,44 +9,29 @@ namespace FLServerMaintenanceTool
     {
         public static void StartCountdown()
         {
+            //Load countdown items
+            List<CountdownItem> countdownItems = new List<CountdownItem>();
+            int items = int.Parse(Common.IniFile.IniReadValue("countdown", "count"));
+            for (int i = 0; i < items; i++)
+            {
+                CountdownItem ci = new CountdownItem();
+                ci.ConsoleMessage = Common.IniFile.IniReadValue("countdown", "item" + i + "console");
+                ci.UniverseMessage = Common.IniFile.IniReadValue("countdown", "item" + i + "universe");
+                ci.WaitTime = int.Parse(Common.IniFile.IniReadValue("countdown", "item" + i + "wait"));
+                countdownItems.Add(ci);
+            }
+
             //Create a connection to flhook and connect it
             FLHookConnection flhookconnection = new FLHookConnection();
             flhookconnection.Connect();
-
-            //Send 1hr warning
-            Console.WriteLine("Auto Maintainance in 1hr");
-            flhookconnection.SendUniverseMessage("The server will be shut down in about 1 hour for auto-maintenance.");
-            Wait(15);
-
-            //Send 45min warning
-            Console.WriteLine("AutoMaintainance in 45mins");
-            flhookconnection.SendUniverseMessage("The server will be shut down in about 45 minutes for auto-maintenance.");
-            Wait(15);
-
-            //Send 30min warning
-            Console.WriteLine("Auto Maintainance in 30mins");
-            flhookconnection.SendUniverseMessage("The server will be shut down in about 30 minutes for auto-maintenance.");
-            Wait(15);
-
-            //Send 15min warning
-            Console.WriteLine("Auto Maintainance in 15mins");
-            flhookconnection.SendUniverseMessage("The server will be shut down in about 15 minutes for auto-maintenance.");
-            Wait(5);
-
-            //Send 10min warning
-            Console.WriteLine("Auto Maintainance in 10mins");
-            flhookconnection.SendUniverseMessage("The server will be shut down in about 10 minutes for auto-maintenance.");
-            Wait(5);
-
-            //Send 5min warning
-            Console.WriteLine("Auto Maintainance in 5mins");
-            flhookconnection.SendUniverseMessage("The server will be shut down in about 5 minutes for auto-maintenance.  It will be back up again shortly after.");
-            Wait(4);
-
-            //Send 1min warning
-            Console.WriteLine("Auto Maintainance in 1min");
-            flhookconnection.SendUniverseMessage("The server will be shut down in about 1 minute for auto-maintenance.  To avoid losing information in your playerfile, please log off NOW!");
-            Wait(1);
+            
+            //Run Countdown
+            foreach (CountdownItem ci in countdownItems)
+            {
+                Console.WriteLine(ci.ConsoleMessage);
+                flhookconnection.SendUniverseMessage(ci.UniverseMessage);
+                Wait(ci.WaitTime);
+            }
 
             //Send shutdown warning
             Console.WriteLine("Auto Maintainance Started");
