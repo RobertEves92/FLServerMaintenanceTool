@@ -39,6 +39,7 @@ namespace FLServerMaintenanceTool
             Console.Write("Backup Up FLHook Logs...");
             DirectoryCopy(Common.ExeFolder + "flhook_logs", TimedBackupFolder + "flhook_logs", true);
             Directory.Delete(Common.ExeFolder + "flhook_logs", true); //Stops log build up, we only want logs since the last backup
+            File.Create(Common.ExeFolder + "flhook_logs\\events.log"); //Create a new blank events log as some FL server programs try to access it when loaded without checking it exists
             Console.WriteLine("DONE");
 
             //Copy FLHook Plugins
