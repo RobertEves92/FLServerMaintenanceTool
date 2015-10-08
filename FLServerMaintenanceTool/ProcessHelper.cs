@@ -47,5 +47,10 @@ namespace FLServerMaintenanceTool
             Process.Start(processpath);
             Console.WriteLine("DONE");
         }
+
+        internal static void StartSettingsProcess()
+        {
+            StartProcess("FLServerMaintainanceSettings.exe");
+        }
     }
 }
