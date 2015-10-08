@@ -70,6 +70,7 @@
     <Compile Include="Backup.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Countdown.cs" />
+    <Compile Include="CountdownItem.cs" />
     <Compile Include="FLHookConnection.cs" />
     <Compile Include="ProcessHelper.cs" />
     <Compile Include="Program.cs" />
