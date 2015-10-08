@@ -9,6 +9,8 @@ namespace FLServerMaintenanceTool
             Console.Title = "FL Server Maintainance";
 
             Countdown.StartCountdown();
+
+            Console.WriteLine("Auto Maintainance Started");
             ProcessHelper.CloseProcesses();
             Backup.RunBackup();
             ProcessHelper.StartProcesses();

@@ -9,6 +9,11 @@ namespace FLServerMaintenanceTool
     {
         public static void StartCountdown()
         {
+            //Quit countdown if it is disabled
+            if (!Boolean.Parse(Common.IniFile.IniReadValue("countdown", "enabled")))
+                return;
+
+
             //Load countdown items
             List<CountdownItem> countdownItems = new List<CountdownItem>();
             int items = int.Parse(Common.IniFile.IniReadValue("countdown", "count"));
@@ -32,9 +37,6 @@ namespace FLServerMaintenanceTool
                 flhookconnection.SendUniverseMessage(ci.UniverseMessage);
                 Wait(ci.WaitTime);
             }
-
-            //Send shutdown warning
-            Console.WriteLine("Auto Maintainance Started");
 
             //Diconnect from FLHook
             flhookconnection.Disconnect();
