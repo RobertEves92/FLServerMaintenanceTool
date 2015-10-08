@@ -101,6 +101,12 @@ namespace FLServerMaintainanceSettings
             }
             else
             {
+                //Get default FL install folder
+                txtFreelancerFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Microsoft Games\\Freelancer";
+                //Get default FL server executable
+                txtProcessesRestart.Text = txtFreelancerFolder.Text + "\\EXE\\flserver.exe";
+                //Get current user MP folder
+                txtAccountFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Freelancer\\Accts\\MultiPlayer";
                 //run save method to save default values
                 SaveSettings();
             }

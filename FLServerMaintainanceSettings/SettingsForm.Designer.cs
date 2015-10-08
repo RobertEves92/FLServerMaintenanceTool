@@ -31,32 +31,32 @@ namespace FLServerMaintainanceSettings
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "Auto Maintainance in 1hr",
             "The server will be shut down in about 1 hour for auto-maintenance.",
             "15"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
             "Auto Maintainance in 45mins",
             "The server will be shut down in about 45 minutes for auto-maintenance.",
             "15"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
             "Auto Maintainance in 30mins",
             "The server will be shut down in about 30 minutes for auto-maintenance.",
             "15"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
             "Auto Maintainance in 15mins",
             "The server will be shut down in about 15 minutes for auto-maintenance.",
             "5"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
             "Auto Maintainance in 10mins",
             "The server will be shut down in about 10 minutes for auto-maintenance.",
             "5"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
             "Auto Maintainance in 5mins",
             "The server will be shut down in about 5 minutes for auto-maintenance.  It will be" +
                 " back up again shortly after.",
             "4"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
             "Auto Maintainance in 1min",
             "The server will be shut down in about 1 minute for auto-maintenance.  To avoid lo" +
                 "sing information in your playerfile, please log off NOW!",
@@ -136,6 +136,7 @@ namespace FLServerMaintainanceSettings
             this.txtBackupFolder.Name = "txtBackupFolder";
             this.txtBackupFolder.Size = new System.Drawing.Size(290, 20);
             this.txtBackupFolder.TabIndex = 7;
+            this.txtBackupFolder.Text = "C:\\Freelancer Server Backups";
             // 
             // label3
             // 
@@ -240,6 +241,7 @@ namespace FLServerMaintainanceSettings
             this.txtServerPassword.Name = "txtServerPassword";
             this.txtServerPassword.Size = new System.Drawing.Size(81, 20);
             this.txtServerPassword.TabIndex = 5;
+            this.txtServerPassword.Text = "password";
             // 
             // label5
             // 
@@ -256,6 +258,7 @@ namespace FLServerMaintainanceSettings
             this.txtServerAddress.Name = "txtServerAddress";
             this.txtServerAddress.Size = new System.Drawing.Size(63, 20);
             this.txtServerAddress.TabIndex = 1;
+            this.txtServerAddress.Text = "127.0.0.1";
             // 
             // label4
             // 
@@ -305,6 +308,7 @@ namespace FLServerMaintainanceSettings
             this.txtProcessesShutdown.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtProcessesShutdown.Size = new System.Drawing.Size(185, 62);
             this.txtProcessesShutdown.TabIndex = 1;
+            this.txtProcessesShutdown.Text = "FLServer";
             // 
             // label6
             // 
@@ -357,13 +361,13 @@ namespace FLServerMaintainanceSettings
             this.listViewCountdown.GridLines = true;
             this.listViewCountdown.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewCountdown.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7});
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14});
             this.listViewCountdown.Location = new System.Drawing.Point(6, 18);
             this.listViewCountdown.Name = "listViewCountdown";
             this.listViewCountdown.Size = new System.Drawing.Size(517, 210);
