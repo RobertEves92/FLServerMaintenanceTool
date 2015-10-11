@@ -3,13 +3,22 @@ using System.Windows.Forms;
 
 namespace FLServerMaintainanceSettings
 {
+    /// <summary>
+    /// Input Box for creating or editing countdown items
+    /// </summary>
     public partial class InputBox : Form
     {
+        /// <summary>
+        /// Input Box Constructor
+        /// </summary>
         public InputBox()
         {
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Message to write to the console
+        /// </summary>
         public string ConsoleMessage
         {
             get
@@ -22,6 +31,9 @@ namespace FLServerMaintainanceSettings
             }
         }
 
+        /// <summary>
+        /// Message to send to FL Universe
+        /// </summary>
         public string UniverseMessage
         {
             get
@@ -34,6 +46,9 @@ namespace FLServerMaintainanceSettings
             }
         }
 
+        /// <summary>
+        /// Number of minutes to wait after displaying messages
+        /// </summary>
         public string WaitTime
         {
             get

@@ -26,7 +26,7 @@ namespace FLServerMaintenanceTool
         public void SendUniverseMessage(String message)
         {
             #if !DEBUG
-            SendCommand("msgu " + message);
+            this.SendCommand(string.Format("msgu {0}", message));
             #endif
         }
 

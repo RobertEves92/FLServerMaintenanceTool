@@ -3,6 +3,9 @@ using System.IO;
 
 namespace FLServerMaintenanceTool
 {
+    /// <summary>
+    /// Class for managing the backup process
+    /// </summary>
     public static class Backup
     {
         private static readonly string[] flHookFiles = { "flhook.dll", "flhook.ini", "zlib.dll" };
@@ -32,6 +35,9 @@ namespace FLServerMaintenanceTool
             }
         }
 
+        /// <summary>
+        /// Starts the backup process
+        /// </summary>
         public static void RunBackup()
         {
             //Get Current Date and Time

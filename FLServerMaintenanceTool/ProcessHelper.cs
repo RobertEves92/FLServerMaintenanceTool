@@ -3,8 +3,14 @@ using System.Diagnostics;
 
 namespace FLServerMaintenanceTool
 {
+    /// <summary>
+    /// Class for managing process functions
+    /// </summary>
     public static class ProcessHelper
     {
+        /// <summary>
+        /// Close processes listed in the settings file
+        /// </summary>
         public static void CloseProcesses()
         {
             string[] processesToClose = Common.IniFile.IniReadValue("processes", "shutdown").Split(',');
@@ -15,6 +21,9 @@ namespace FLServerMaintenanceTool
             }
         }
 
+        /// <summary>
+        /// Open processes listed in the settings file
+        /// </summary>
         public static void StartProcesses()
         {
             string[] processesToStart = Common.IniFile.IniReadValue("processes", "restart").Split(',');

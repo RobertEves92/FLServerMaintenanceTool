@@ -2,6 +2,9 @@
 
 namespace FLServerMaintainanceSettings
 {
+    /// <summary>
+    /// Maintainance Tool Settings Form
+    /// </summary>
     partial class SettingsForm
     {
         /// <summary>
