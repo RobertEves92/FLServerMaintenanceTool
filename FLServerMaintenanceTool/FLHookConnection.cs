@@ -5,45 +5,45 @@ using System.Text;
 
 namespace FLServerMaintenanceTool
 {
-    class FLHookConnection
+    internal class FLHookConnection
     {
-        readonly Socket socket;
+        private readonly Socket socket;
 
         public FLHookConnection()
         {
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
         public void Connect()
         {
             //Create connection to FLHook and send password
-            IPAddress ipAdd = IPAddress.Parse(Properties.Settings.Default.ServerAddress);
-            IPEndPoint remoteEP = new IPEndPoint(ipAdd, Properties.Settings.Default.ServerPort);
-            socket.Connect(remoteEP);
-            SendCommand("pass" + Properties.Settings.Default.ServerPassword);
+            IPAddress ipAdd = IPAddress.Parse(Common.IniFile.IniReadValue("server", "address"));
+            var remoteEP = new IPEndPoint(ipAdd, int.Parse(Common.IniFile.IniReadValue("server", "port")));
+            this.socket.Connect(remoteEP);
+            this.SendCommand(string.Format("pass{0}", Common.IniFile.IniReadValue("server", "password")));
         }
 
         public void SendUniverseMessage(String message)
         {
-#if !DEBUG
-            SendCommand("msgu " + message);
-#endif
+            #if !DEBUG
+            this.SendCommand(string.Format("msgu {0}", message));
+            #endif
         }
 
         public void SendCommand(String command)
         {
-            socket.Send(GetBytes(command));
+            this.socket.Send(this.GetBytes(command));
         }
 
         public void Disconnect()
         {
-            socket.Disconnect(false);
+            this.socket.Disconnect(false);
         }
 
         private byte[] GetBytes(String data)
         {
             //convert data string to byte array and add linebreaks
-            byte[] byData = Encoding.ASCII.GetBytes(data + "\r\n");
+            byte[] byData = Encoding.ASCII.GetBytes(string.Format("{0}\r\n", data));
             return byData;
         }
     }

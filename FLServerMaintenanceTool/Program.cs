@@ -1,29 +1,29 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace FLServerMaintenanceTool
 {
-    static class Program
+    internal class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            foreach (string s in args)
+            Console.Title = "FL Server Maintainance";
+
+            if (System.IO.File.Exists(Common.SettingsFile))
             {
-                if (s == "/autorun")
-                    Common.AutoRun = true;
+                Countdown.StartCountdown();
+
+                Console.WriteLine("Auto Maintainance Started");
+                ProcessHelper.CloseProcesses();
+                Backup.RunBackup();
+                ProcessHelper.StartProcesses();
+                Console.WriteLine("Auto Maintainance Completed");
             }
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            if (Common.AutoRun)
-                Application.Run(new MainForm());
             else
-                Application.Run(new SettingsForm());
+            {
+                Console.WriteLine("No settings file found.");
+                ProcessHelper.StartSettingsProcess();
+            }
+            Console.ReadLine();
         }
     }
 }

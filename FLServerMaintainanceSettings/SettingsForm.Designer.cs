@@ -1,5 +1,10 @@
-﻿namespace FLServerMaintenanceTool
+﻿using FLServerMaintainanceSettings;
+
+namespace FLServerMaintainanceSettings
 {
+    /// <summary>
+    /// Maintainance Tool Settings Form
+    /// </summary>
     partial class SettingsForm
     {
         /// <summary>
@@ -29,6 +34,36 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 1hr",
+            "The server will be shut down in about 1 hour for auto-maintenance.",
+            "15"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 45mins",
+            "The server will be shut down in about 45 minutes for auto-maintenance.",
+            "15"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 30mins",
+            "The server will be shut down in about 30 minutes for auto-maintenance.",
+            "15"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 15mins",
+            "The server will be shut down in about 15 minutes for auto-maintenance.",
+            "5"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 10mins",
+            "The server will be shut down in about 10 minutes for auto-maintenance.",
+            "5"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 5mins",
+            "The server will be shut down in about 5 minutes for auto-maintenance.  It will be" +
+                " back up again shortly after.",
+            "4"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Auto Maintainance in 1min",
+            "The server will be shut down in about 1 minute for auto-maintenance.  To avoid lo" +
+                "sing information in your playerfile, please log off NOW!",
+            "1"}, -1);
             this.grpFolders = new System.Windows.Forms.GroupBox();
             this.btnSetBackupFolder = new System.Windows.Forms.Button();
             this.txtBackupFolder = new System.Windows.Forms.TextBox();
@@ -40,6 +75,8 @@
             this.txtFreelancerFolder = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numServerPort = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtServerPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtServerAddress = new System.Windows.Forms.TextBox();
@@ -52,12 +89,20 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.label8 = new System.Windows.Forms.Label();
-            this.numServerPort = new System.Windows.Forms.NumericUpDown();
+            this.grpCountdown = new System.Windows.Forms.GroupBox();
+            this.listViewCountdown = new System.Windows.Forms.ListView();
+            this.clmConsoleMessage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmUniverseMessage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmWaitTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.chkCountdown = new System.Windows.Forms.CheckBox();
             this.grpFolders.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.grpCountdown.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpFolders
@@ -94,6 +139,7 @@
             this.txtBackupFolder.Name = "txtBackupFolder";
             this.txtBackupFolder.Size = new System.Drawing.Size(290, 20);
             this.txtBackupFolder.TabIndex = 7;
+            this.txtBackupFolder.Text = "C:\\Freelancer Server Backups";
             // 
             // label3
             // 
@@ -171,12 +217,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "FLHook";
             // 
+            // numServerPort
+            // 
+            this.numServerPort.Location = new System.Drawing.Point(194, 13);
+            this.numServerPort.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numServerPort.Name = "numServerPort";
+            this.numServerPort.Size = new System.Drawing.Size(45, 20);
+            this.numServerPort.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(159, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Port:";
+            // 
             // txtServerPassword
             // 
             this.txtServerPassword.Location = new System.Drawing.Point(311, 13);
             this.txtServerPassword.Name = "txtServerPassword";
             this.txtServerPassword.Size = new System.Drawing.Size(81, 20);
-            this.txtServerPassword.TabIndex = 3;
+            this.txtServerPassword.TabIndex = 5;
+            this.txtServerPassword.Text = "password";
             // 
             // label5
             // 
@@ -184,7 +252,7 @@
             this.label5.Location = new System.Drawing.Point(245, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 13);
-            this.label5.TabIndex = 2;
+            this.label5.TabIndex = 4;
             this.label5.Text = "Password:";
             // 
             // txtServerAddress
@@ -193,6 +261,7 @@
             this.txtServerAddress.Name = "txtServerAddress";
             this.txtServerAddress.Size = new System.Drawing.Size(63, 20);
             this.txtServerAddress.TabIndex = 1;
+            this.txtServerAddress.Text = "127.0.0.1";
             // 
             // label4
             // 
@@ -211,7 +280,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(12, 170);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(404, 100);
+            this.groupBox2.Size = new System.Drawing.Size(404, 105);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Processes";
@@ -222,7 +291,7 @@
             this.label7.Location = new System.Drawing.Point(200, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 13);
-            this.label7.TabIndex = 3;
+            this.label7.TabIndex = 2;
             this.label7.Text = "Processes to restart:";
             // 
             // txtProcessesRestart
@@ -232,7 +301,7 @@
             this.txtProcessesRestart.Name = "txtProcessesRestart";
             this.txtProcessesRestart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtProcessesRestart.Size = new System.Drawing.Size(189, 62);
-            this.txtProcessesRestart.TabIndex = 2;
+            this.txtProcessesRestart.TabIndex = 3;
             // 
             // txtProcessesShutdown
             // 
@@ -242,6 +311,7 @@
             this.txtProcessesShutdown.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtProcessesShutdown.Size = new System.Drawing.Size(185, 62);
             this.txtProcessesShutdown.TabIndex = 1;
+            this.txtProcessesShutdown.Text = "FLServer";
             // 
             // label6
             // 
@@ -254,73 +324,149 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(341, 276);
+            this.btnCancel.Location = new System.Drawing.Point(879, 281);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Close";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(260, 276);
+            this.btnSave.Location = new System.Drawing.Point(798, 281);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 4;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
-            // label8
+            // grpCountdown
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(159, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Port:";
+            this.grpCountdown.Controls.Add(this.listViewCountdown);
+            this.grpCountdown.Controls.Add(this.btnAdd);
+            this.grpCountdown.Controls.Add(this.btnEdit);
+            this.grpCountdown.Controls.Add(this.btnRemove);
+            this.grpCountdown.Location = new System.Drawing.Point(431, 12);
+            this.grpCountdown.Name = "grpCountdown";
+            this.grpCountdown.Size = new System.Drawing.Size(529, 263);
+            this.grpCountdown.TabIndex = 4;
+            this.grpCountdown.TabStop = false;
             // 
-            // numServerPort
+            // listViewCountdown
             // 
-            this.numServerPort.Location = new System.Drawing.Point(194, 13);
-            this.numServerPort.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.numServerPort.Name = "numServerPort";
-            this.numServerPort.Size = new System.Drawing.Size(45, 20);
-            this.numServerPort.TabIndex = 5;
+            this.listViewCountdown.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmConsoleMessage,
+            this.clmUniverseMessage,
+            this.clmWaitTime});
+            this.listViewCountdown.FullRowSelect = true;
+            this.listViewCountdown.GridLines = true;
+            this.listViewCountdown.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewCountdown.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14});
+            this.listViewCountdown.Location = new System.Drawing.Point(6, 18);
+            this.listViewCountdown.Name = "listViewCountdown";
+            this.listViewCountdown.Size = new System.Drawing.Size(517, 210);
+            this.listViewCountdown.TabIndex = 0;
+            this.listViewCountdown.UseCompatibleStateImageBehavior = false;
+            this.listViewCountdown.View = System.Windows.Forms.View.Details;
+            // 
+            // clmConsoleMessage
+            // 
+            this.clmConsoleMessage.Text = "Console Message";
+            this.clmConsoleMessage.Width = 138;
+            // 
+            // clmUniverseMessage
+            // 
+            this.clmUniverseMessage.Text = "Universe Message";
+            this.clmUniverseMessage.Width = 302;
+            // 
+            // clmWaitTime
+            // 
+            this.clmWaitTime.Text = "Wait (mins)";
+            this.clmWaitTime.Width = 70;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(286, 234);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.BtnAddClick);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(367, 234);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.BtnEditClick);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(448, 234);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 3;
+            this.btnRemove.Text = "Delete";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.BtnRemoveClick);
+            // 
+            // chkCountdown
+            // 
+            this.chkCountdown.AutoSize = true;
+            this.chkCountdown.Checked = true;
+            this.chkCountdown.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCountdown.Location = new System.Drawing.Point(440, 12);
+            this.chkCountdown.Name = "chkCountdown";
+            this.chkCountdown.Size = new System.Drawing.Size(161, 17);
+            this.chkCountdown.TabIndex = 3;
+            this.chkCountdown.Text = "Countdown (Recommended)";
+            this.chkCountdown.UseVisualStyleBackColor = true;
+            this.chkCountdown.CheckedChanged += new System.EventHandler(this.ChkCountdownCheckedChanged);
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 304);
+            this.ClientSize = new System.Drawing.Size(972, 311);
+            this.Controls.Add(this.chkCountdown);
+            this.Controls.Add(this.grpCountdown);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpFolders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Settings";
+            this.Text = "Freelancer Maintainance Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsForm_FormClosing);
             this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.grpFolders.ResumeLayout(false);
             this.grpFolders.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numServerPort)).EndInit();
+            this.grpCountdown.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -351,6 +497,15 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown numServerPort;
+        private System.Windows.Forms.GroupBox grpCountdown;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.CheckBox chkCountdown;
+        private System.Windows.Forms.ListView listViewCountdown;
+        private System.Windows.Forms.ColumnHeader clmConsoleMessage;
+        private System.Windows.Forms.ColumnHeader clmUniverseMessage;
+        private System.Windows.Forms.ColumnHeader clmWaitTime;
 
     }
 }

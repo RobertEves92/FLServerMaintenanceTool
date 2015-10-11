@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FLServerMaintenanceTool")]
-[assembly: AssemblyDescription("Tool for general freelancer server maintainance and backups")]
+[assembly: AssemblyTitle("FLServerMaintainanceSettings")]
+[assembly: AssemblyDescription("Settings Management for FLServerMaintainanceTool")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Robert Eves")]
-[assembly: AssemblyProduct("FLServerMaintenanceTool")]
+[assembly: AssemblyProduct("FLServerMaintainanceSettings")]
 [assembly: AssemblyCopyright("Copyright © Robert Eves 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b462d81a-bc64-40cd-9389-bc90e01b0f7b")]
+[assembly: Guid("96b3c67d-9cac-4f11-a34f-48a4ac30e7d2")]
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version
