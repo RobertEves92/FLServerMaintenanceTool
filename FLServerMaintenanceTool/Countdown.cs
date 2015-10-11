@@ -4,8 +4,14 @@ using System.Threading;
 
 namespace FLServerMaintenanceTool
 {
+    /// <summary>
+    /// Class for managing the countdown process
+    /// </summary>
     public static class Countdown
     {
+        /// <summary>
+        /// Start the countdown process
+        /// </summary>
         public static void StartCountdown()
         {
             //Quit countdown if it is disabled

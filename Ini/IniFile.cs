@@ -9,7 +9,7 @@ namespace Ini
     /// </summary>
     public class IniFile
     {
-        public string Path;
+        private readonly string path;
 
         /// <summary>
         /// INIFile Constructor.
@@ -17,7 +17,7 @@ namespace Ini
         /// <PARAM name="INIPath"></PARAM>
         public IniFile(string iniPath)
         {
-            this.Path = iniPath;
+            this.path = iniPath;
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Ini
         /// Value Name
         public void IniWriteValue(string section, string key, string value)
         {
-            WritePrivateProfileString(section, key, value, this.Path);
+            WritePrivateProfileString(section, key, value, this.path);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Ini
         {
             var temp = new StringBuilder(255);
             GetPrivateProfileString(section, key, "", temp,
-                255, this.Path);
+                255, this.path);
             return temp.ToString();
         }
 

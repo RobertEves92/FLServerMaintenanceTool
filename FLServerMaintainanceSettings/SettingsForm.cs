@@ -10,6 +10,9 @@ namespace FLServerMaintainanceSettings
         private static bool warnClose = true;
         private static IniFile iniFile;
 
+        /// <summary>
+        /// Settings Form constructor
+        /// </summary>
         public SettingsForm()
         {
             this.InitializeComponent();
