@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
 namespace FLServerMaintenanceTool
 {
@@ -27,10 +25,15 @@ namespace FLServerMaintenanceTool
             }
         }
 
+        internal static void StartSettingsProcess()
+        {
+            StartProcess("FLServerMaintainanceSettings.exe");
+        }
+
         private static void CloseProcess(string processname)
         {
-            Console.Write("Ending Process " + processname + "...");
-            foreach (var process in Process.GetProcessesByName(processname))
+            Console.Write(string.Format("Ending Process {0}...", processname));
+            foreach (Process process in Process.GetProcessesByName(processname))
             {
                 //Close process and free resources
                 process.CloseMainWindow();
@@ -43,14 +46,9 @@ namespace FLServerMaintenanceTool
 
         private static void StartProcess(string processpath)
         {
-            Console.Write("Starting Process " + processpath + "...");
+            Console.Write(string.Format("Starting Process {0}...", processpath));
             Process.Start(processpath);
             Console.WriteLine("DONE");
-        }
-
-        internal static void StartSettingsProcess()
-        {
-            StartProcess("FLServerMaintainanceSettings.exe");
         }
     }
 }

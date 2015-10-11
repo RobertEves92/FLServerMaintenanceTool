@@ -9,16 +9,32 @@ namespace FLServerMaintainanceSettings
     {
         private static bool warnClose = true;
         private static IniFile iniFile;
-        private static String SettingsFolder{get{return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Sairento\\FLServerMaintainance\\";}}
-        private static String SettingsFile { get { return SettingsFolder+ "settings.ini"; } }
 
         public SettingsForm()
         {
-            InitializeComponent();
-            if(!System.IO.Directory.Exists(SettingsFolder))
+            this.InitializeComponent();
+            if (!System.IO.Directory.Exists(SettingsFolder))
+            {
                 System.IO.Directory.CreateDirectory(SettingsFolder);
+            }
 
             iniFile = new IniFile(SettingsFile);
+        }
+
+        private static String SettingsFolder
+        {
+            get
+            {
+                return string.Format("{0}\\Sairento\\FLServerMaintainance\\", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            }
+        }
+
+        private static String SettingsFile
+        {
+            get
+            {
+                return string.Format("{0}settings.ini", SettingsFolder);
+            }
         }
 
         private void BtnCancelClick(object sender, EventArgs e)
@@ -40,7 +56,7 @@ namespace FLServerMaintainanceSettings
 
         private void BtnSaveClick(object sender, EventArgs e)
         {
-            SaveSettings();
+            this.SaveSettings();
 
             //close without warning
             warnClose = false;
@@ -50,24 +66,24 @@ namespace FLServerMaintainanceSettings
         private void SaveSettings()
         {
             //Save new settings
-            iniFile.IniWriteValue("folders", "freelancer", txtFreelancerFolder.Text);
-            iniFile.IniWriteValue("folders", "accounts", txtAccountFolder.Text);
-            iniFile.IniWriteValue("folders", "backup", txtBackupFolder.Text);
+            iniFile.IniWriteValue("folders", "freelancer", this.txtFreelancerFolder.Text);
+            iniFile.IniWriteValue("folders", "accounts", this.txtAccountFolder.Text);
+            iniFile.IniWriteValue("folders", "backup", this.txtBackupFolder.Text);
 
-            iniFile.IniWriteValue("server", "address", txtServerAddress.Text);
-            iniFile.IniWriteValue("server", "port", numServerPort.Value.ToString());
-            iniFile.IniWriteValue("server", "password", txtServerPassword.Text);
+            iniFile.IniWriteValue("server", "address", this.txtServerAddress.Text);
+            iniFile.IniWriteValue("server", "port", this.numServerPort.Value.ToString());
+            iniFile.IniWriteValue("server", "password", this.txtServerPassword.Text);
 
-            iniFile.IniWriteValue("processes", "shutdown", txtProcessesShutdown.Text.Replace("\r\n", ","));
-            iniFile.IniWriteValue("processes", "restart", txtProcessesRestart.Text.Replace("\r\n", ","));
+            iniFile.IniWriteValue("processes", "shutdown", this.txtProcessesShutdown.Text.Replace("\r\n", ","));
+            iniFile.IniWriteValue("processes", "restart", this.txtProcessesRestart.Text.Replace("\r\n", ","));
 
-            iniFile.IniWriteValue("countdown", "enabled", chkCountdown.Checked.ToString());
-            iniFile.IniWriteValue("countdown", "count", listViewCountdown.Items.Count.ToString());
-            for (int i = 0; i < listViewCountdown.Items.Count; i++)
+            iniFile.IniWriteValue("countdown", "enabled", this.chkCountdown.Checked.ToString());
+            iniFile.IniWriteValue("countdown", "count", this.listViewCountdown.Items.Count.ToString());
+            for (int i = 0; i < this.listViewCountdown.Items.Count; i++)
             {
-                iniFile.IniWriteValue("countdown", "item" + i + "console", listViewCountdown.Items[i].Text);
-                iniFile.IniWriteValue("countdown", "item" + i + "universe", listViewCountdown.Items[i].SubItems[1].Text);
-                iniFile.IniWriteValue("countdown", "item" + i + "wait", listViewCountdown.Items[i].SubItems[2].Text);
+                iniFile.IniWriteValue("countdown", string.Format("item{0}console", i), this.listViewCountdown.Items[i].Text);
+                iniFile.IniWriteValue("countdown", string.Format("item{0}universe", i), this.listViewCountdown.Items[i].SubItems[1].Text);
+                iniFile.IniWriteValue("countdown", string.Format("item{0}wait", i), this.listViewCountdown.Items[i].SubItems[2].Text);
             }
         }
 
@@ -76,63 +92,63 @@ namespace FLServerMaintainanceSettings
             if (File.Exists(SettingsFile))
             {
                 //Read settings from file if the file exists
-                txtFreelancerFolder.Text = iniFile.IniReadValue("folders", "freelancer");
-                txtAccountFolder.Text = iniFile.IniReadValue("folders", "accounts");
-                txtBackupFolder.Text = iniFile.IniReadValue("folders", "backup");
+                this.txtFreelancerFolder.Text = iniFile.IniReadValue("folders", "freelancer");
+                this.txtAccountFolder.Text = iniFile.IniReadValue("folders", "accounts");
+                this.txtBackupFolder.Text = iniFile.IniReadValue("folders", "backup");
 
-                txtServerAddress.Text = iniFile.IniReadValue("server", "address");
-                numServerPort.Value = decimal.Parse(iniFile.IniReadValue("server", "port"));
-                txtServerPassword.Text = iniFile.IniReadValue("server", "password");
+                this.txtServerAddress.Text = iniFile.IniReadValue("server", "address");
+                this.numServerPort.Value = decimal.Parse(iniFile.IniReadValue("server", "port"));
+                this.txtServerPassword.Text = iniFile.IniReadValue("server", "password");
 
-                txtProcessesShutdown.Text = iniFile.IniReadValue("processes", "shutdown").Replace(",", "\r\n");
-                txtProcessesRestart.Text = iniFile.IniReadValue("processes", "restart").Replace(",", "\r\n");
+                this.txtProcessesShutdown.Text = iniFile.IniReadValue("processes", "shutdown").Replace(",", "\r\n");
+                this.txtProcessesRestart.Text = iniFile.IniReadValue("processes", "restart").Replace(",", "\r\n");
 
-                listViewCountdown.Items.Clear();
-                chkCountdown.Checked = Boolean.Parse(iniFile.IniReadValue("countdown","enabled"));
+                this.listViewCountdown.Items.Clear();
+                this.chkCountdown.Checked = Boolean.Parse(iniFile.IniReadValue("countdown", "enabled"));
                 int items = int.Parse(iniFile.IniReadValue("countdown", "count"));
                 for (int i = 0; i < items; i++)
                 {
-                    ListViewItem item = new ListViewItem();
-                    item.Text = iniFile.IniReadValue("countdown", "item" + i + "console");
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, iniFile.IniReadValue("countdown", "item" + i + "universe")));
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, iniFile.IniReadValue("countdown", "item" + i + "wait")));
-                    listViewCountdown.Items.Add(item);
+                    var item = new ListViewItem();
+                    item.Text = iniFile.IniReadValue("countdown", string.Format("item{0}console", i));
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, iniFile.IniReadValue("countdown", string.Format("item{0}universe", i))));
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, iniFile.IniReadValue("countdown", string.Format("item{0}wait", i))));
+                    this.listViewCountdown.Items.Add(item);
                 }
             }
             else
             {
                 //Get default FL install folder
-                txtFreelancerFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Microsoft Games\\Freelancer";
+                this.txtFreelancerFolder.Text = string.Format("{0}\\Microsoft Games\\Freelancer", Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles));
                 //Get default FL server executable
-                txtProcessesRestart.Text = txtFreelancerFolder.Text + "\\EXE\\flserver.exe";
+                this.txtProcessesRestart.Text = string.Format("{0}\\EXE\\flserver.exe", this.txtFreelancerFolder.Text);
                 //Get current user MP folder
-                txtAccountFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Freelancer\\Accts\\MultiPlayer";
+                this.txtAccountFolder.Text = string.Format("{0}\\My Games\\Freelancer\\Accts\\MultiPlayer", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
                 //run save method to save default values
-                SaveSettings();
+                this.SaveSettings();
             }
         }
 
         private void BtnSetFLFolderClick(object sender, EventArgs e)
         {
-            folderBrowserDialog.ShowDialog();
-            txtFreelancerFolder.Text = folderBrowserDialog.SelectedPath;
+            this.folderBrowserDialog.ShowDialog();
+            this.txtFreelancerFolder.Text = this.folderBrowserDialog.SelectedPath;
         }
 
         private void BtnSetAccountsFolderClick(object sender, EventArgs e)
         {
-            folderBrowserDialog.ShowDialog();
-            txtAccountFolder.Text = folderBrowserDialog.SelectedPath;
+            this.folderBrowserDialog.ShowDialog();
+            this.txtAccountFolder.Text = this.folderBrowserDialog.SelectedPath;
         }
 
         private void BtnSetBackupFolderClick(object sender, EventArgs e)
         {
-            folderBrowserDialog.ShowDialog();
-            txtBackupFolder.Text = folderBrowserDialog.SelectedPath;
+            this.folderBrowserDialog.ShowDialog();
+            this.txtBackupFolder.Text = this.folderBrowserDialog.SelectedPath;
         }
 
         private void BtnRemoveClick(object sender, EventArgs e)
         {
-            if (listViewCountdown.SelectedItems.Count == 0)
+            if (this.listViewCountdown.SelectedItems.Count == 0)
             {
                 MessageBox.Show("No item(s) selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -141,7 +157,7 @@ namespace FLServerMaintainanceSettings
                 DialogResult result = MessageBox.Show("Are you sure you want to delete the selected countdown items?", "Delete Countdown Items?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
-                    foreach (ListViewItem item in listViewCountdown.SelectedItems)
+                    foreach (ListViewItem item in this.listViewCountdown.SelectedItems)
                     {
                         item.Remove();
                     }
@@ -151,46 +167,46 @@ namespace FLServerMaintainanceSettings
 
         private void BtnAddClick(object sender, EventArgs e)
         {
-            InputBox inputBox = new InputBox();
+            var inputBox = new InputBox();
             if (inputBox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ListViewItem item = new ListViewItem();
+                var item = new ListViewItem();
                 item.Text = inputBox.ConsoleMessage;
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, inputBox.UniverseMessage));
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, inputBox.WaitTime));
-                listViewCountdown.Items.Add(item);
+                this.listViewCountdown.Items.Add(item);
             }
         }
 
         private void BtnEditClick(object sender, EventArgs e)
         {
-            if (listViewCountdown.SelectedItems.Count > 1)
+            if (this.listViewCountdown.SelectedItems.Count > 1)
             {
                 MessageBox.Show("Only one item should be selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (listViewCountdown.SelectedItems.Count == 0)
+            else if (this.listViewCountdown.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Please select an item to edit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                InputBox inputBox = new InputBox();
-                inputBox.ConsoleMessage = listViewCountdown.SelectedItems[0].Text;
-                inputBox.UniverseMessage = listViewCountdown.SelectedItems[0].SubItems[1].Text;
-                inputBox.WaitTime = listViewCountdown.SelectedItems[0].SubItems[2].Text;
+                var inputBox = new InputBox();
+                inputBox.ConsoleMessage = this.listViewCountdown.SelectedItems[0].Text;
+                inputBox.UniverseMessage = this.listViewCountdown.SelectedItems[0].SubItems[1].Text;
+                inputBox.WaitTime = this.listViewCountdown.SelectedItems[0].SubItems[2].Text;
 
                 if (inputBox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    listViewCountdown.SelectedItems[0].Text = inputBox.ConsoleMessage;
-                    listViewCountdown.SelectedItems[0].SubItems[1].Text = inputBox.UniverseMessage;
-                    listViewCountdown.SelectedItems[0].SubItems[2].Text = inputBox.WaitTime;
+                    this.listViewCountdown.SelectedItems[0].Text = inputBox.ConsoleMessage;
+                    this.listViewCountdown.SelectedItems[0].SubItems[1].Text = inputBox.UniverseMessage;
+                    this.listViewCountdown.SelectedItems[0].SubItems[2].Text = inputBox.WaitTime;
                 }
             }
         }
 
         private void ChkCountdownCheckedChanged(object sender, EventArgs e)
         {
-            grpCountdown.Enabled = chkCountdown.Checked;
+            this.grpCountdown.Enabled = this.chkCountdown.Checked;
         }
     }
 }

@@ -1,30 +1,57 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FLServerMaintainanceSettings
 {
     public partial class InputBox : Form
     {
-        public string ConsoleMessage { get { return txtConsole.Text; } set { txtConsole.Text = value; } }
-        public string UniverseMessage { get { return txtUniverse.Text; } set { txtUniverse.Text = value; } }
-        public string WaitTime { get { return Convert.ToInt32(numWait.Value).ToString(); } set { numWait.Value = decimal.Parse(value); } }
-
         public InputBox()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
+        public string ConsoleMessage
+        {
+            get
+            {
+                return this.txtConsole.Text;
+            }
+            set
+            {
+                this.txtConsole.Text = value;
+            }
+        }
+
+        public string UniverseMessage
+        {
+            get
+            {
+                return this.txtUniverse.Text;
+            }
+            set
+            {
+                this.txtUniverse.Text = value;
+            }
+        }
+
+        public string WaitTime
+        {
+            get
+            {
+                return Convert.ToInt32(this.numWait.Value).ToString();
+            }
+            set
+            {
+                this.numWait.Value = decimal.Parse(value);
+            }
+        }
+
+        private void BtnOKClick(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }

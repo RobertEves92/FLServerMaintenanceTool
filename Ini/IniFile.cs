@@ -9,15 +9,7 @@ namespace Ini
     /// </summary>
     public class IniFile
     {
-        public string path;
-
-        [DllImport("kernel32")]
-        private static extern long WritePrivateProfileString(string section,
-            string key, string val, string filePath);
-        [DllImport("kernel32")]
-        private static extern int GetPrivateProfileString(string section,
-                 string key, string def, StringBuilder retVal,
-            int size, string filePath);
+        public string Path;
 
         /// <summary>
         /// INIFile Constructor.
@@ -25,8 +17,9 @@ namespace Ini
         /// <PARAM name="INIPath"></PARAM>
         public IniFile(string iniPath)
         {
-            path = iniPath;
+            this.Path = iniPath;
         }
+
         /// <summary>
         /// Write Data to the INI File
         /// </summary>
@@ -38,7 +31,7 @@ namespace Ini
         /// Value Name
         public void IniWriteValue(string section, string key, string value)
         {
-            WritePrivateProfileString(section, key, value, this.path);
+            WritePrivateProfileString(section, key, value, this.Path);
         }
 
         /// <summary>
@@ -50,11 +43,19 @@ namespace Ini
         /// <returns></returns>
         public string IniReadValue(string section, string key)
         {
-            StringBuilder temp = new StringBuilder(255);
-            int i = GetPrivateProfileString(section, key, "", temp,
-                                            255, this.path);
+            var temp = new StringBuilder(255);
+            GetPrivateProfileString(section, key, "", temp,
+                255, this.Path);
             return temp.ToString();
-
         }
+
+        [DllImport("kernel32")]
+        private static extern long WritePrivateProfileString(string section,
+            string key, string val, string filePath);
+
+        [DllImport("kernel32")]
+        private static extern int GetPrivateProfileString(string section,
+            string key, string def, StringBuilder retVal,
+            int size, string filePath);
     }
 }

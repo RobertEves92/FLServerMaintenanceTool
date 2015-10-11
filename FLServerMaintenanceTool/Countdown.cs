@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
 namespace FLServerMaintenanceTool
@@ -11,23 +10,24 @@ namespace FLServerMaintenanceTool
         {
             //Quit countdown if it is disabled
             if (!Boolean.Parse(Common.IniFile.IniReadValue("countdown", "enabled")))
+            {
                 return;
-
+            }
 
             //Load countdown items
-            List<CountdownItem> countdownItems = new List<CountdownItem>();
+            var countdownItems = new List<CountdownItem>();
             int items = int.Parse(Common.IniFile.IniReadValue("countdown", "count"));
             for (int i = 0; i < items; i++)
             {
-                CountdownItem ci = new CountdownItem();
-                ci.ConsoleMessage = Common.IniFile.IniReadValue("countdown", "item" + i + "console");
-                ci.UniverseMessage = Common.IniFile.IniReadValue("countdown", "item" + i + "universe");
-                ci.WaitTime = int.Parse(Common.IniFile.IniReadValue("countdown", "item" + i + "wait"));
+                var ci = new CountdownItem();
+                ci.ConsoleMessage = Common.IniFile.IniReadValue("countdown", string.Format("item{0}console", i));
+                ci.UniverseMessage = Common.IniFile.IniReadValue("countdown", string.Format("item{0}universe", i));
+                ci.WaitTime = int.Parse(Common.IniFile.IniReadValue("countdown", string.Format("item{0}wait", i)));
                 countdownItems.Add(ci);
             }
 
             //Create a connection to flhook and connect it
-            FLHookConnection flhookconnection = new FLHookConnection();
+            var flhookconnection = new FLHookConnection();
             flhookconnection.Connect();
             
             //Run Countdown
@@ -47,12 +47,12 @@ namespace FLServerMaintenanceTool
             int minstogo = mins;
             for (int i = 0; i < mins; i++)
             {
-                Console.Write("Waiting for " + minstogo + "mins...");
-#if DEBUG
+                Console.Write(string.Format("Waiting for {0}mins...", minstogo));
+                #if DEBUG
                 Thread.Sleep(1000);
-#else
+                #else
                 Thread.Sleep(60 * 1000);
-#endif
+                #endif
                 minstogo--;
                 Console.CursorLeft = 0;
             }
