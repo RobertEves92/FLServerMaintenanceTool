@@ -23,7 +23,6 @@ namespace FLServerMaintenanceTool
                 Console.WriteLine("No settings file found.");
                 ProcessHelper.StartSettingsProcess();
             }
-            Console.ReadLine();
         }
     }
 }
