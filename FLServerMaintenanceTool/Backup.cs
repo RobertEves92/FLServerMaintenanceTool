@@ -66,6 +66,9 @@ namespace FLServerMaintenanceTool
             Console.Write("Backup Up FLHook Logs...");
             DirectoryCopy(string.Format("{0}flhook_logs", Common.ExeFolder), string.Format("{0}flhook_logs", TimedBackupFolder), true);
             Directory.Delete(string.Format("{0}flhook_logs", Common.ExeFolder), true); //Stops log build up, we only want logs since the last backup
+            System.Threading.Thread.Sleep(1000);
+            Directory.CreateDirectory(string.Format("{0}flhook_logs", Common.ExeFolder));
+            System.Threading.Thread.Sleep(1000);
             File.Create(string.Format("{0}flhook_logs\\events.log", Common.ExeFolder)); //Create a new blank events log as some FL server programs try to access it when loaded without checking it exists
             Console.WriteLine("DONE");
 
