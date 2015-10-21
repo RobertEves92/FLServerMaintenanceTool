@@ -35,13 +35,21 @@ namespace FLServerMaintenanceTool
             //Create a connection to flhook and connect it
             var flhookconnection = new FLHookConnection();
             flhookconnection.Connect();
-            
-            //Run Countdown
-            foreach (CountdownItem ci in countdownItems)
+
+            //Run Countdown if players are online
+            if (flhookconnection.PlayersOnline())
             {
-                Console.WriteLine(ci.ConsoleMessage);
-                flhookconnection.SendUniverseMessage(ci.UniverseMessage);
-                Wait(ci.WaitTime);
+                Console.WriteLine("Players are online, starting countdown");
+                foreach (CountdownItem ci in countdownItems)
+                {
+                    Console.WriteLine(ci.ConsoleMessage);
+                    flhookconnection.SendUniverseMessage(ci.UniverseMessage);
+                    Wait(ci.WaitTime);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No players online, skipping countdown");
             }
 
             //Diconnect from FLHook
